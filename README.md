@@ -12,7 +12,6 @@ Construit cu **Express.js** și deployat pe **cPanel** (Innovahosting) via *Setu
 ├── package.json              # express ^4.19.2, npm start
 ├── templates/index.html      # singura pagină (responsive, clamp() pentru fluid typography)
 ├── static/videos/intro.mp4   # video-ul din hero
-├── DEPLOY_CPANEL.md          # ghid pas-cu-pas pentru deploy pe cPanel
 └── .gitignore
 ```
 
@@ -31,9 +30,7 @@ $env:PORT=4000; npm start
 
 ## Deploy
 
-Vezi [DEPLOY_CPANEL.md](DEPLOY_CPANEL.md) pentru pașii detaliați.
-
-Pe scurt, după push pe `main`:
+După push pe `main`:
 1. cPanel → **Git Version Control** → **Update from Remote** → **Deploy HEAD Commit**
 2. cPanel → **Setup Node.js App** → **Restart**
 
