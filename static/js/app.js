@@ -112,7 +112,46 @@
 
       'final.msg': '„Pentru că dragostea adevărată<br/>nu se vede cu ochii,<br/>ci se simte cu inima."',
 
-      'footer.text': 'Cu drag, Daniela & Cristian'
+      'footer.text': 'Cu drag, Daniela & Cristian',
+
+      'loader.skip': 'Sari peste',
+
+      'daysCounter.eyebrow': 'Povestea noastră în cifre',
+      'daysCounter.title': 'De atunci pentru totdeauna',
+      'daysCounter.daysLabel': 'zile de când ne-am cunoscut',
+      'daysCounter.untilWedding': 'și încă',
+      'daysCounter.untilWeddingSuffix': 'până la „Da, pentru totdeauna"',
+
+      'addCalendar.button': 'Adaugă în calendar',
+      'addCalendar.title': 'Salvează data',
+      'addCalendar.modalTitle': 'Adaugă în calendar',
+      'addCalendar.description': 'Alege serviciul tău preferat — îți pregătim invitația completă cu locație și program.',
+      'addCalendar.google': 'Google Calendar',
+      'addCalendar.apple': 'Apple Calendar',
+      'addCalendar.outlook': 'Outlook',
+      'addCalendar.eventTitle': 'Nunta Daniela & Cristian',
+      'addCalendar.eventDescription': 'Cununia la Biserica Sfinții Împărați Constantin și Elena (14:00). Petrecerea la Villa Garden (17:00).',
+      'addCalendar.eventLocation': 'Villa Garden, Bulevardul Decebal 16, Chișinău',
+
+      'share.button': 'Trimite invitația',
+      'share.title': 'Trimite invitația',
+      'share.modalTitle': 'Cum vrei să trimiți?',
+      'share.whatsapp': 'WhatsApp',
+      'share.telegram': 'Telegram',
+      'share.email': 'Email',
+      'share.copy': 'Copiază linkul',
+      'share.copied': 'Copiat ✓',
+      'share.toastCopied': 'Link copiat',
+      'share.shareText': 'Vă invităm cu drag la nunta noastră — 23 Iulie 2027, Chișinău',
+      'share.emailSubject': 'Invitație la nuntă — Daniela & Cristian',
+
+      'qr.button': 'Cod QR',
+      'qr.title': 'Cod QR',
+      'qr.modalTitle': 'Pentru invitațiile tipărite',
+      'qr.description': 'Tipărește acest cod pe invitațiile fizice — oaspeții pot accesa pagina cu un scan.',
+      'qr.download': 'Descarcă PNG',
+
+      'modal.closeAria': 'Închide'
     },
 
     en: {
@@ -216,7 +255,46 @@
 
       'final.msg': '„Because true love<br/>is not seen with the eyes,<br/>but felt with the heart."',
 
-      'footer.text': 'With love, Daniela & Cristian'
+      'footer.text': 'With love, Daniela & Cristian',
+
+      'loader.skip': 'Skip',
+
+      'daysCounter.eyebrow': 'Our story in numbers',
+      'daysCounter.title': 'From then to forever',
+      'daysCounter.daysLabel': 'days since we met',
+      'daysCounter.untilWedding': 'and another',
+      'daysCounter.untilWeddingSuffix': 'until „I do, forever"',
+
+      'addCalendar.button': 'Add to calendar',
+      'addCalendar.title': 'Save the date',
+      'addCalendar.modalTitle': 'Add to calendar',
+      'addCalendar.description': 'Pick your favourite service — we\'ll prepare the full invitation with venue and program.',
+      'addCalendar.google': 'Google Calendar',
+      'addCalendar.apple': 'Apple Calendar',
+      'addCalendar.outlook': 'Outlook',
+      'addCalendar.eventTitle': 'Daniela & Cristian\'s Wedding',
+      'addCalendar.eventDescription': 'Religious ceremony at „Saints Constantine and Helen" Church (14:00). Reception at Villa Garden (17:00).',
+      'addCalendar.eventLocation': 'Villa Garden, 16 Decebal Boulevard, Chișinău',
+
+      'share.button': 'Share invitation',
+      'share.title': 'Share invitation',
+      'share.modalTitle': 'How would you like to share?',
+      'share.whatsapp': 'WhatsApp',
+      'share.telegram': 'Telegram',
+      'share.email': 'Email',
+      'share.copy': 'Copy link',
+      'share.copied': 'Copied ✓',
+      'share.toastCopied': 'Link copied',
+      'share.shareText': 'You\'re warmly invited to our wedding — 23 July 2027, Chișinău',
+      'share.emailSubject': 'Wedding invitation — Daniela & Cristian',
+
+      'qr.button': 'QR code',
+      'qr.title': 'QR code',
+      'qr.modalTitle': 'For printed invitations',
+      'qr.description': 'Print this code on physical invitations — guests can reach the page with a single scan.',
+      'qr.download': 'Download PNG',
+
+      'modal.closeAria': 'Close'
     },
 
     ru: {
@@ -320,7 +398,46 @@
 
       'final.msg': '„Потому что настоящая любовь<br/>не видна глазами,<br/>но чувствуется сердцем."',
 
-      'footer.text': 'С любовью, Даниэла и Кристиан'
+      'footer.text': 'С любовью, Даниэла и Кристиан',
+
+      'loader.skip': 'Пропустить',
+
+      'daysCounter.eyebrow': 'Наша история в цифрах',
+      'daysCounter.title': 'С тех пор и навсегда',
+      'daysCounter.daysLabel': 'дней с тех пор, как мы встретились',
+      'daysCounter.untilWedding': 'и ещё',
+      'daysCounter.untilWeddingSuffix': 'до „Да, навсегда"',
+
+      'addCalendar.button': 'Добавить в календарь',
+      'addCalendar.title': 'Сохранить дату',
+      'addCalendar.modalTitle': 'Добавить в календарь',
+      'addCalendar.description': 'Выберите ваш сервис — мы подготовим приглашение с местом и программой.',
+      'addCalendar.google': 'Google Календарь',
+      'addCalendar.apple': 'Apple Calendar',
+      'addCalendar.outlook': 'Outlook',
+      'addCalendar.eventTitle': 'Свадьба Daniela и Cristian',
+      'addCalendar.eventDescription': 'Венчание в церкви „Святых Константина и Елены" (14:00). Торжество в Villa Garden (17:00).',
+      'addCalendar.eventLocation': 'Villa Garden, Бульвар Дечебал 16, Кишинёв',
+
+      'share.button': 'Поделиться приглашением',
+      'share.title': 'Поделиться',
+      'share.modalTitle': 'Как хотите поделиться?',
+      'share.whatsapp': 'WhatsApp',
+      'share.telegram': 'Telegram',
+      'share.email': 'Email',
+      'share.copy': 'Копировать ссылку',
+      'share.copied': 'Скопировано ✓',
+      'share.toastCopied': 'Ссылка скопирована',
+      'share.shareText': 'Приглашаем вас на нашу свадьбу — 23 июля 2027, Кишинёв',
+      'share.emailSubject': 'Приглашение на свадьбу — Daniela и Cristian',
+
+      'qr.button': 'QR-код',
+      'qr.title': 'QR-код',
+      'qr.modalTitle': 'Для печатных приглашений',
+      'qr.description': 'Распечатайте этот код на физических приглашениях — гости смогут открыть страницу одним сканом.',
+      'qr.download': 'Скачать PNG',
+
+      'modal.closeAria': 'Закрыть'
     }
   };
 
@@ -416,6 +533,447 @@
     });
   });
 
+  function t(key) {
+    var lang = document.documentElement.getAttribute('lang') || DEFAULT_LANG;
+    var dict = TRANSLATIONS[lang] || TRANSLATIONS[DEFAULT_LANG];
+    return dict[key] !== undefined ? dict[key] : (TRANSLATIONS[DEFAULT_LANG][key] || '');
+  }
+  function currentLocale() {
+    var lang = document.documentElement.getAttribute('lang') || DEFAULT_LANG;
+    return lang === 'ro' ? 'ro-RO' : lang === 'ru' ? 'ru-RU' : 'en-US';
+  }
+
+  // ============================================================
+  // Toast — notificari rapide (ex: "Copiat ✓")
+  // ============================================================
+  var toastEl = document.getElementById('toast');
+  var toastTimeout = null;
+  function showToast(message, ms) {
+    if (!toastEl) return;
+    toastEl.textContent = message;
+    toastEl.classList.add('shown');
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(function () {
+      toastEl.classList.remove('shown');
+    }, ms || 2200);
+  }
+
+  // ============================================================
+  // Generic modal — open / close / focus trap / esc / backdrop
+  // ============================================================
+  var lastModalFocus = null;
+
+  function openModal(id) {
+    var modal = document.getElementById(id);
+    if (!modal) return null;
+    lastModalFocus = document.activeElement;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    // Focus pe primul element focusabil
+    setTimeout(function () {
+      var first = modal.querySelector('.modal-close, button, [href], input, [tabindex]:not([tabindex="-1"])');
+      if (first) first.focus();
+    }, 50);
+    return modal;
+  }
+  function closeModal(modal) {
+    if (typeof modal === 'string') modal = document.getElementById(modal);
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    // Inchide global doar daca nu mai sunt alte modale deschise
+    if (!document.querySelector('.modal-overlay.open')) {
+      document.body.classList.remove('modal-open');
+    }
+    if (lastModalFocus && typeof lastModalFocus.focus === 'function') {
+      try { lastModalFocus.focus(); } catch (e) { /* ignore */ }
+    }
+  }
+  function closeAllModals() {
+    document.querySelectorAll('.modal-overlay.open').forEach(function (m) { closeModal(m); });
+  }
+
+  // Click pe X / pe backdrop / Esc
+  document.querySelectorAll('.modal-overlay').forEach(function (modal) {
+    modal.querySelectorAll('[data-modal-close]').forEach(function (btn) {
+      btn.addEventListener('click', function () { closeModal(modal); });
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal(modal);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.querySelector('.modal-overlay.open')) {
+      e.preventDefault();
+      closeAllModals();
+    }
+  });
+  // Focus trap — Tab cycleaza in interiorul modalului deschis
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var modal = document.querySelector('.modal-overlay.open .modal-card');
+    if (!modal) return;
+    var focusables = modal.querySelectorAll(
+      'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  // ============================================================
+  // Days counter — zile de cand ne-am cunoscut + zile pana la nunta
+  // ============================================================
+  var DATE_MET_UTC = Date.UTC(2021, 11, 24);    // 24 Decembrie 2021
+  var DATE_WED_UTC = Date.UTC(2027, 6, 23);     // 23 Iulie 2027
+  var daysSinceEl = document.getElementById('daysSinceMet');
+  var daysUntilEl = document.getElementById('daysUntilWedding');
+
+  function todayUTCMidnight() {
+    var d = new Date();
+    return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+  }
+  function updateDaysCounter() {
+    if (!daysSinceEl && !daysUntilEl) return;
+    var today = todayUTCMidnight();
+    var since = Math.max(0, Math.floor((today - DATE_MET_UTC) / 86400000));
+    var until = Math.max(0, Math.floor((DATE_WED_UTC - today) / 86400000));
+    var nf;
+    try { nf = new Intl.NumberFormat(currentLocale()); }
+    catch (e) { nf = { format: function (n) { return String(n); } }; }
+    if (daysSinceEl) daysSinceEl.textContent = nf.format(since);
+    if (daysUntilEl) daysUntilEl.textContent = nf.format(until);
+  }
+  updateDaysCounter();
+  // Update la fiecare ora (suficient pentru zile)
+  setInterval(updateDaysCounter, 3600000);
+
+  // Hook into language change -> reformatare cu noul locale
+  var originalSetLang = setLang;
+  setLang = function (lang) {
+    originalSetLang(lang);
+    updateDaysCounter();
+    refreshShareButtonLabel();
+    if (typeof setIcon === 'function') setIcon();
+  };
+  // Si la click pe butoane (originalSetLang nu e folosit direct de listener-ul existent...
+  // de fapt da, e folosit prin closure). Re-leg butoanele ca sa cheme noul setLang:
+  document.querySelectorAll('.lang-switch button[data-lang]').forEach(function (btn) {
+    var newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    newBtn.addEventListener('click', function () {
+      setLang(newBtn.getAttribute('data-lang'));
+    });
+  });
+
+  // ============================================================
+  // CALENDAR — Google / Apple (.ics) / Outlook
+  // ============================================================
+  // Eveniment: 23 Iulie 2027 14:00 -> 24 Iulie 2027 03:00 ora Chișinău (UTC+3 in iulie / EEST)
+  // In UTC: 23 Iulie 2027 11:00 -> 24 Iulie 2027 00:00
+  var EVENT_START_UTC = '20270723T110000Z';
+  var EVENT_END_UTC   = '20270724T000000Z';
+  var EVENT_START_LOCAL = '20270723T140000';
+  var EVENT_END_LOCAL   = '20270724T030000';
+
+  function buildGoogleUrl() {
+    var params = [
+      'action=TEMPLATE',
+      'text=' + encodeURIComponent(t('addCalendar.eventTitle')),
+      'dates=' + EVENT_START_LOCAL + '/' + EVENT_END_LOCAL,
+      'ctz=Europe/Chisinau',
+      'details=' + encodeURIComponent(t('addCalendar.eventDescription')),
+      'location=' + encodeURIComponent(t('addCalendar.eventLocation'))
+    ];
+    return 'https://calendar.google.com/calendar/render?' + params.join('&');
+  }
+  function buildOutlookUrl() {
+    var params = [
+      'path=/calendar/action/compose',
+      'rru=addevent',
+      'subject=' + encodeURIComponent(t('addCalendar.eventTitle')),
+      'startdt=2027-07-23T14:00:00',
+      'enddt=2027-07-24T03:00:00',
+      'body=' + encodeURIComponent(t('addCalendar.eventDescription')),
+      'location=' + encodeURIComponent(t('addCalendar.eventLocation'))
+    ];
+    return 'https://outlook.live.com/calendar/0/deeplink/compose?' + params.join('&');
+  }
+  function buildIcs() {
+    var nowStamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    var lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Daniela Cristian//Wedding//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VTIMEZONE',
+      'TZID:Europe/Chisinau',
+      'BEGIN:DAYLIGHT',
+      'TZOFFSETFROM:+0200',
+      'TZOFFSETTO:+0300',
+      'TZNAME:EEST',
+      'DTSTART:19700329T030000',
+      'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU',
+      'END:DAYLIGHT',
+      'BEGIN:STANDARD',
+      'TZOFFSETFROM:+0300',
+      'TZOFFSETTO:+0200',
+      'TZNAME:EET',
+      'DTSTART:19701025T040000',
+      'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU',
+      'END:STANDARD',
+      'END:VTIMEZONE',
+      'BEGIN:VEVENT',
+      'UID:wedding-daniela-cristian-2027@cristian-and-daniela-weeding.eu',
+      'DTSTAMP:' + nowStamp,
+      'DTSTART;TZID=Europe/Chisinau:' + EVENT_START_LOCAL,
+      'DTEND;TZID=Europe/Chisinau:' + EVENT_END_LOCAL,
+      'SUMMARY:' + t('addCalendar.eventTitle'),
+      'DESCRIPTION:' + t('addCalendar.eventDescription').replace(/\n/g, '\\n'),
+      'LOCATION:' + t('addCalendar.eventLocation'),
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ];
+    return lines.join('\r\n');
+  }
+  function downloadIcs() {
+    var blob = new Blob([buildIcs()], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'nunta-daniela-cristian.ics';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+  }
+
+  var openCalBtn = document.getElementById('openCalendarModal');
+  if (openCalBtn) {
+    openCalBtn.addEventListener('click', function () {
+      // Update URL-uri inainte de a deschide (in caz ca s-a schimbat limba)
+      var g = document.getElementById('calGoogle');
+      var o = document.getElementById('calOutlook');
+      if (g) g.href = buildGoogleUrl();
+      if (o) o.href = buildOutlookUrl();
+      openModal('calendarModal');
+    });
+  }
+  var appleBtn = document.getElementById('calApple');
+  if (appleBtn) {
+    appleBtn.addEventListener('click', function () {
+      downloadIcs();
+      closeModal('calendarModal');
+    });
+  }
+
+  // ============================================================
+  // SHARE — Web Share API native, fallback la modal cu WA / TG / Email / Copy
+  // ============================================================
+  var openShareBtn = document.getElementById('openShareModal');
+  var shareWhatsApp = document.getElementById('shareWhatsApp');
+  var shareTelegram = document.getElementById('shareTelegram');
+  var shareEmail = document.getElementById('shareEmail');
+  var shareCopy = document.getElementById('shareCopy');
+  var shareCopyStatus = document.getElementById('shareCopyStatus');
+
+  function refreshShareButtonLabel() { /* placeholder, hook pentru viitor */ }
+
+  function buildShareUrls() {
+    var text = t('share.shareText');
+    var url = location.href;
+    var subject = t('share.emailSubject');
+    return {
+      whatsapp: 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url),
+      telegram: 'https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text),
+      email: 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text + '\n\n' + url)
+    };
+  }
+  function updateShareLinks() {
+    var urls = buildShareUrls();
+    if (shareWhatsApp) shareWhatsApp.href = urls.whatsapp;
+    if (shareTelegram) shareTelegram.href = urls.telegram;
+    if (shareEmail) shareEmail.href = urls.email;
+  }
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(
+        function () { return true; },
+        function () { return fallbackCopy(text); }
+      );
+    }
+    return Promise.resolve(fallbackCopy(text));
+  }
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      ta.style.top = '0';
+      ta.setAttribute('readonly', '');
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, ta.value.length);
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) { return false; }
+  }
+
+  if (openShareBtn) {
+    openShareBtn.addEventListener('click', function () {
+      // Incercam Web Share API mai intai
+      if (navigator.share) {
+        navigator.share({
+          title: t('page.title'),
+          text: t('share.shareText'),
+          url: location.href
+        }).catch(function () { /* user cancel / error - silent */ });
+      } else {
+        updateShareLinks();
+        openModal('shareModal');
+      }
+    });
+  }
+  if (shareCopy) {
+    shareCopy.addEventListener('click', function () {
+      copyToClipboard(location.href).then(function (ok) {
+        if (ok) {
+          if (shareCopyStatus) {
+            shareCopyStatus.classList.add('shown');
+            setTimeout(function () { shareCopyStatus.classList.remove('shown'); }, 2000);
+          }
+          showToast(t('share.toastCopied'));
+        }
+      });
+    });
+  }
+
+  // ============================================================
+  // QR CODE — lazy load qrcode-generator + render canvas + download PNG
+  // ============================================================
+  var qrLibLoaded = false;
+  var qrLibLoading = null;
+
+  function loadQrLib() {
+    if (qrLibLoaded) return Promise.resolve();
+    if (qrLibLoading) return qrLibLoading;
+    qrLibLoading = new Promise(function (resolve, reject) {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';
+      script.async = true;
+      script.onload = function () { qrLibLoaded = true; resolve(); };
+      script.onerror = function () { qrLibLoading = null; reject(new Error('QR lib load failed')); };
+      document.head.appendChild(script);
+    });
+    return qrLibLoading;
+  }
+
+  function renderQrToCanvas(text, size) {
+    if (typeof window.qrcode !== 'function') return null;
+    // type 0 = auto, error correction H (cea mai mare, tolereaza monograma in centru)
+    var qr = window.qrcode(0, 'H');
+    qr.addData(text);
+    qr.make();
+
+    var canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext('2d');
+
+    // Background cream
+    ctx.fillStyle = '#FAF4ED';
+    ctx.fillRect(0, 0, size, size);
+
+    var modules = qr.getModuleCount();
+    var moduleSize = size / modules;
+
+    // Modules in burgundy (var(--color-text-main))
+    ctx.fillStyle = '#6B2030';
+    for (var row = 0; row < modules; row++) {
+      for (var col = 0; col < modules; col++) {
+        if (qr.isDark(row, col)) {
+          // Rotunjim usor coordonatele ca sa evitam gap-uri sub-pixel
+          var x = Math.floor(col * moduleSize);
+          var y = Math.floor(row * moduleSize);
+          var w = Math.ceil(moduleSize + 0.5);
+          ctx.fillRect(x, y, w, w);
+        }
+      }
+    }
+    return canvas;
+  }
+
+  var openQrBtn = document.getElementById('openQrModal');
+  var qrWrap = document.getElementById('qrWrap');
+  var qrDownloadBtn = document.getElementById('qrDownload');
+
+  if (openQrBtn) {
+    openQrBtn.addEventListener('click', function () {
+      openModal('qrModal');
+      loadQrLib().then(function () {
+        var canvas = renderQrToCanvas(location.href, 320);
+        if (canvas && qrWrap) {
+          var existing = qrWrap.querySelector('canvas');
+          if (existing) existing.remove();
+          canvas.style.maxWidth = '280px';
+          canvas.style.width = '100%';
+          canvas.style.height = 'auto';
+          canvas.style.aspectRatio = '1 / 1';
+          canvas.setAttribute('aria-label', t('qr.modalTitle'));
+          qrWrap.insertBefore(canvas, qrWrap.firstChild);
+        }
+      }).catch(function (e) {
+        showToast('Eroare: nu am putut încărca QR-ul');
+        // eslint-disable-next-line no-console
+        console && console.error && console.error(e);
+      });
+    });
+  }
+  if (qrDownloadBtn) {
+    qrDownloadBtn.addEventListener('click', function () {
+      loadQrLib().then(function () {
+        var canvas = renderQrToCanvas(location.href, 600);
+        if (!canvas) return;
+        if (canvas.toBlob) {
+          canvas.toBlob(function (blob) {
+            if (!blob) return;
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'qr-daniela-cristian.png';
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function () {
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            }, 100);
+          }, 'image/png');
+        } else {
+          // Fallback foarte vechi
+          var dataUrl = canvas.toDataURL('image/png');
+          var a = document.createElement('a');
+          a.href = dataUrl;
+          a.download = 'qr-daniela-cristian.png';
+          a.click();
+        }
+      });
+    });
+  }
+
   // ============================================================
   // Smooth scroll engine
   //
@@ -503,14 +1061,55 @@
   });
 
   // ============================================================
-  // Loader
+  // Loader — animatie plic + skip + localStorage flag
   // ============================================================
-  window.addEventListener('load', function () {
+  (function setupLoader() {
+    var loader = document.getElementById('loader');
+    if (!loader) return;
+
+    var skipBtn = document.getElementById('loaderSkip');
+    var INTRO_KEY = 'dc_seen_intro';
+    var ANIM_DURATION = 3400; // ms — totala (envelope appear → seal fall → flap → card → pause)
+    var SKIP_REVEAL_AFTER = 1000; // ms — skip button apare dupa 1s
+
+    var seenBefore = false;
+    try { seenBefore = localStorage.getItem(INTRO_KEY) === '1'; } catch (e) { /* storage blocked */ }
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Blocheaza scroll-ul pe durata animatiei (CSS scroll-lock prin clasa pe body)
+    document.body.style.overflow = 'hidden';
+
+    function hideLoader(persist) {
+      loader.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (persist) {
+        try { localStorage.setItem(INTRO_KEY, '1'); } catch (e) { /* ignore */ }
+      }
+    }
+
+    // Skip cu buton — fade rapid, fara persistare
+    if (skipBtn) {
+      skipBtn.addEventListener('click', function () { hideLoader(false); });
+    }
+
+    if (seenBefore || reduceMotion) {
+      // Skip animatia — fade scurt
+      setTimeout(function () { hideLoader(false); }, 300);
+      return;
+    }
+
+    // Animatia ruleaza complet — pornim timerele IMEDIAT,
+    // sincronizat cu animatiile CSS (care nu asteapta window.load)
     setTimeout(function () {
-      var loader = document.getElementById('loader');
-      if (loader) loader.classList.add('hidden');
-    }, 1400);
-  });
+      if (skipBtn && !loader.classList.contains('hidden')) {
+        skipBtn.classList.add('shown');
+      }
+    }, SKIP_REVEAL_AFTER);
+
+    setTimeout(function () {
+      if (!loader.classList.contains('hidden')) hideLoader(true);
+    }, ANIM_DURATION);
+  })();
 
   // ============================================================
   // Falling petals (decorative, skipped if user prefers reduced motion)
