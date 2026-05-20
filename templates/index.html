@@ -609,18 +609,6 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Monograma in centru */
-        .loader-monogram {
-            opacity: 0;
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: loader-monogram-in 1.2s cubic-bezier(0.22, 1.2, 0.36, 1) 1.8s forwards;
-        }
-        @keyframes loader-monogram-in {
-            0%   { opacity: 0; transform: scale(0.65); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
         /* Nume cu handwriting reveal */
         .loader-name-row {
             text-align: center;
@@ -762,7 +750,6 @@
             .loader-branch { stroke-dashoffset: 0 !important; }
             .loader-leaf,
             .loader-bud,
-            .loader-monogram,
             .loader-name,
             .loader-amp,
             .loader-gold-dot,
@@ -944,31 +931,6 @@
         .scroll-hint:active svg {
             transform: translateY(2px);
         }
-
-        .unmute {
-            position: absolute;
-            top: 22px;
-            right: 22px;
-            z-index: 3;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.25);
-            color: #fff;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        @media (hover: hover) and (pointer: fine) {
-            .unmute:hover { background: rgba(0,0,0,0.65); }
-        }
-        .unmute:active { background: rgba(0,0,0,0.65); }
 
         /* ============================================================
            REPLAY BUTTON — aparent doar dupa ce videoclipul se termina
@@ -1807,7 +1769,6 @@
         @media (max-width: 480px) {
             .top-label { top: 24px; letter-spacing: 0.3em; }
             .scroll-hint { bottom: 24px; letter-spacing: 0.3em; }
-            .unmute { top: 16px; right: 16px; }
 
             /* Perlele laterale ale cardului — mai aproape de margine ca sa nu acopere textul */
             .pearls-left  { left: 6px;  width: 16px; }
@@ -2001,12 +1962,6 @@
                     <circle class="loader-bud" cx="255" cy="56" r="2.8" fill="url(#loaderPearlGold)" style="animation-delay: 2.05s"/>
                 </g>
 
-                <!-- Monograma D&C in centru — foloseste symbol-ul global -->
-                <g class="loader-monogram" transform="translate(240, 195)">
-                    <g transform="scale(0.6) translate(-100, -100)">
-                        <use href="#monogram-dc"/>
-                    </g>
-                </g>
             </svg>
 
             <!-- Nume cu handwriting reveal -->
@@ -2042,8 +1997,6 @@
         <div class="hero-overlay"></div>
 
         <div class="top-label" data-i18n="hero.topLabel">Vă invităm la nunta noastră</div>
-
-        <button class="unmute" id="unmuteBtn" data-i18n-aria-label="hero.muteAria" aria-label="Dezactivează sunetul">&#128266;</button>
 
         <button type="button" class="hero-replay" id="heroReplay"
                 data-i18n-aria-label="hero.replayAria" aria-label="Reia videoclipul">
