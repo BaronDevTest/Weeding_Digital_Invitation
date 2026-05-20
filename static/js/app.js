@@ -19,6 +19,7 @@
       'hero.topLabel': 'Vă invităm la nunta noastră',
       'hero.unmuteAria': 'Activează sunetul',
       'hero.muteAria': 'Dezactivează sunetul',
+      'hero.replayAria': 'Reia videoclipul',
       'hero.scrollHint': 'Detalii',
       'hero.scrollHintAria': 'Vezi detaliile',
       'hero.date': '23 · 07 · 2027',
@@ -122,6 +123,7 @@
       'hero.topLabel': 'We invite you to our wedding',
       'hero.unmuteAria': 'Unmute',
       'hero.muteAria': 'Mute',
+      'hero.replayAria': 'Replay video',
       'hero.scrollHint': 'Details',
       'hero.scrollHintAria': 'See details',
       'hero.date': '23 · 07 · 2027',
@@ -225,6 +227,7 @@
       'hero.topLabel': 'Приглашаем вас на нашу свадьбу',
       'hero.unmuteAria': 'Включить звук',
       'hero.muteAria': 'Выключить звук',
+      'hero.replayAria': 'Повторить видео',
       'hero.scrollHint': 'Подробнее',
       'hero.scrollHintAria': 'Подробности',
       'hero.date': '23 · 07 · 2027',
@@ -542,6 +545,27 @@
   var video = document.getElementById('introVideo');
   var unmuteBtn = document.getElementById('unmuteBtn');
   var welcome = document.getElementById('welcome');
+  var heroReplayBtn = document.getElementById('heroReplay');
+  var hasAutoScrolledFromVideo = false;
+
+  function showReplay() {
+    if (heroReplayBtn) heroReplayBtn.classList.add('visible');
+  }
+  function hideReplay() {
+    if (heroReplayBtn) heroReplayBtn.classList.remove('visible');
+  }
+  function restartVideo() {
+    if (!video) return;
+    hideReplay();
+    try { video.currentTime = 0; } catch (e) { /* ignore */ }
+    var p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(function () { /* user gesture should suffice; ignore */ });
+    }
+  }
+  if (heroReplayBtn) {
+    heroReplayBtn.addEventListener('click', restartVideo);
+  }
 
   function setIcon () {
     if (!video || !unmuteBtn) return;
@@ -594,12 +618,21 @@
     });
   }
 
-  if (video && welcome) {
+  if (video) {
     video.addEventListener('ended', function () {
-      var rect = welcome.getBoundingClientRect();
-      var targetY = rect.top + (window.scrollY || window.pageYOffset);
-      smoothScrollTo(targetY, 900);
+      // Mereu aratam butonul de replay
+      showReplay();
+      // Smooth scroll spre welcome doar la primul end (nu si la replay-uri)
+      if (!hasAutoScrolledFromVideo && welcome) {
+        hasAutoScrolledFromVideo = true;
+        var rect = welcome.getBoundingClientRect();
+        var targetY = rect.top + (window.scrollY || window.pageYOffset);
+        smoothScrollTo(targetY, 900);
+      }
     });
+    // Cand userul reseteaza video-ul (currentTime=0 sau play dupa ended),
+    // ascundem butonul. `playing` se declanseaza cand chiar incepe sa ruleze.
+    video.addEventListener('playing', hideReplay);
   }
 
   // ============================================================
@@ -767,22 +800,47 @@
   })();
 
   // ============================================================
-  // Lang switcher visibility — ascuns peste hero, vizibil dupa
+  // Hero IntersectionObserver — coordoneaza lang switcher + reluare video
+  //
+  // Probleme rezolvate aici:
+  // 1. Browserele moderne pauzeaza video off-screen pentru a economisi resurse.
+  //    Cand userul revine pe hero, video ramane "stuck" pauzat. -> reluam.
+  // 2. Daca video s-a terminat in timp ce userul citea jos, la revenire
+  //    vrem sa-i aratam butonul de replay.
+  // 3. Lang switcher e ascuns cat timp hero e vizibil.
   // ============================================================
   var heroSection = document.getElementById('hero');
   var langSwitchEl = document.querySelector('.lang-switch');
-  if (heroSection && langSwitchEl) {
+  if (heroSection) {
     if ('IntersectionObserver' in window) {
       var heroIO = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          // Cand mai putin de 20% din hero e vizibil -> aratam switcher-ul
-          langSwitchEl.classList.toggle('visible', !entry.isIntersecting);
+          var heroVisible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+
+          // Lang switcher: ascuns pe hero, vizibil pe restul paginii
+          if (langSwitchEl) {
+            langSwitchEl.classList.toggle('visible', !heroVisible);
+          }
+
+          // Video: cand hero revine in viewport...
+          if (heroVisible && video) {
+            if (video.ended) {
+              // ...si video s-a terminat -> arata butonul de replay
+              showReplay();
+            } else if (video.paused) {
+              // ...si e pauzat de browser (off-screen throttling) -> reia
+              var p = video.play();
+              if (p && typeof p.catch === 'function') {
+                p.catch(function () { /* needs user gesture; ignore */ });
+              }
+            }
+          }
         });
-      }, { threshold: 0.2 });
+      }, { threshold: [0, 0.2, 0.5] });
       heroIO.observe(heroSection);
     } else {
-      // Fallback: arata-l mereu pentru browsere vechi
-      langSwitchEl.classList.add('visible');
+      // Fallback browsere vechi
+      if (langSwitchEl) langSwitchEl.classList.add('visible');
     }
   }
 
