@@ -105,6 +105,10 @@
       'gallery.eyebrow': 'Galerie',
       'gallery.title': 'Momentele noastre',
 
+      'lightbox.closeAria': 'Închide',
+      'lightbox.prevAria': 'Imaginea anterioară',
+      'lightbox.nextAria': 'Imaginea următoare',
+
       'final.msg': '„Pentru că dragostea adevărată<br/>nu se vede cu ochii,<br/>ci se simte cu inima."',
 
       'footer.text': 'Cu drag, Daniela & Cristian'
@@ -204,6 +208,10 @@
       'gallery.eyebrow': 'Gallery',
       'gallery.title': 'Our moments',
 
+      'lightbox.closeAria': 'Close',
+      'lightbox.prevAria': 'Previous image',
+      'lightbox.nextAria': 'Next image',
+
       'final.msg': '„Because true love<br/>is not seen with the eyes,<br/>but felt with the heart."',
 
       'footer.text': 'With love, Daniela & Cristian'
@@ -302,6 +310,10 @@
 
       'gallery.eyebrow': 'Галерея',
       'gallery.title': 'Наши моменты',
+
+      'lightbox.closeAria': 'Закрыть',
+      'lightbox.prevAria': 'Предыдущее фото',
+      'lightbox.nextAria': 'Следующее фото',
 
       'final.msg': '„Потому что настоящая любовь<br/>не видна глазами,<br/>но чувствуется сердцем."',
 
@@ -619,6 +631,140 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ============================================================
+  // Lightbox — click pe poza din galerie => vedere full-screen
+  // Suporta: prev/next butoane, sageti tastatura, Esc, swipe pe mobile,
+  // preload imagini vecine pentru navigare instanta.
+  // ============================================================
+  (function setupLightbox() {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var lightboxClose = document.getElementById('lightboxClose');
+    var lightboxPrev = document.getElementById('lightboxPrev');
+    var lightboxNext = document.getElementById('lightboxNext');
+    var lightboxCounter = document.getElementById('lightboxCounter');
+    var galleryImgs = document.querySelectorAll('.gallery .gallery-item img');
+
+    if (!lightbox || !lightboxImg || galleryImgs.length === 0) return;
+
+    var images = Array.prototype.map.call(galleryImgs, function (img) {
+      return { src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' };
+    });
+    var currentIndex = 0;
+    var lastFocused = null;
+
+    function updateCounter() {
+      if (lightboxCounter) {
+        lightboxCounter.textContent = (currentIndex + 1) + ' / ' + images.length;
+      }
+    }
+
+    function preloadNeighbors() {
+      [-1, 1].forEach(function (offset) {
+        var i = (currentIndex + offset + images.length) % images.length;
+        var pre = new Image();
+        pre.src = images[i].src;
+      });
+    }
+
+    function showImage(index) {
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+      currentIndex = index;
+      var img = images[index];
+
+      lightboxImg.classList.remove('loaded');
+      lightboxImg.alt = img.alt;
+
+      // Preload then set src + animate in
+      var preload = new Image();
+      preload.onload = function () {
+        lightboxImg.src = img.src;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            lightboxImg.classList.add('loaded');
+          });
+        });
+      };
+      preload.src = img.src;
+
+      updateCounter();
+      preloadNeighbors();
+    }
+
+    function open(index) {
+      lastFocused = document.activeElement;
+      showImage(index);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+      // Focus pe butonul close pentru navigare cu tastatura
+      setTimeout(function () { lightboxClose && lightboxClose.focus(); }, 50);
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      // Resetam clasa loaded dupa tranzitie
+      setTimeout(function () { lightboxImg.classList.remove('loaded'); }, 350);
+      // Restoram focus-ul
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    function next() { showImage(currentIndex + 1); }
+    function prev() { showImage(currentIndex - 1); }
+
+    // Click pe poze din galerie -> deschide lightbox
+    Array.prototype.forEach.call(galleryImgs, function (img, i) {
+      img.addEventListener('click', function () { open(i); });
+    });
+
+    lightboxClose.addEventListener('click', close);
+    lightboxNext.addEventListener('click', next);
+    lightboxPrev.addEventListener('click', prev);
+
+    // Click pe backdrop (nu pe imagine sau butoane) inchide
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-stage')) {
+        close();
+      }
+    });
+
+    // Tastatura — doar cand lightbox-ul e deschis
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+
+    // Swipe pe mobile
+    var touchStartX = null;
+    var touchStartY = null;
+    lightbox.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', function (e) {
+      if (touchStartX === null) return;
+      var endX = e.changedTouches[0].clientX;
+      var endY = e.changedTouches[0].clientY;
+      var deltaX = endX - touchStartX;
+      var deltaY = endY - touchStartY;
+      // Swipe orizontal cu prag minim, dominant orizontal
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+        if (deltaX > 0) prev(); else next();
+      }
+      touchStartX = null;
+      touchStartY = null;
+    }, { passive: true });
+  })();
 
   // ============================================================
   // Lang switcher visibility — ascuns peste hero, vizibil dupa

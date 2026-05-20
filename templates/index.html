@@ -868,11 +868,138 @@
             }
             .gallery-item:hover img { transform: scale(1.04); }
         }
+        .gallery-item {
+            cursor: zoom-in;
+        }
         .gallery-item img {
             width: 100%; height: 100%;
             object-fit: cover;
             display: block;
             transition: transform 0.6s ease;
+        }
+
+        /* ============================================================
+           LIGHTBOX — vedere full-screen a pozelor
+           ============================================================ */
+        body.lightbox-open { overflow: hidden; }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(20, 8, 14, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+        .lightbox.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .lightbox-stage {
+            position: relative;
+            width: min(92vw, 1200px);
+            height: min(86vh, 90dvh);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: pan-y;
+        }
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+            opacity: 0;
+            transform: scale(0.97);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .lightbox-image.loaded {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .lightbox-close,
+        .lightbox-nav {
+            position: absolute;
+            z-index: 2;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .lightbox-close svg,
+        .lightbox-nav svg {
+            width: 22px;
+            height: 22px;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .lightbox-close:hover,
+            .lightbox-nav:hover {
+                background: rgba(255,255,255,0.20);
+                transform: scale(1.06);
+            }
+            .lightbox-nav.prev:hover { transform: translateY(-50%) scale(1.06); }
+            .lightbox-nav.next:hover { transform: translateY(-50%) scale(1.06); }
+        }
+        .lightbox-close:active,
+        .lightbox-nav:active { background: rgba(255,255,255,0.22); }
+        .lightbox-close:focus-visible,
+        .lightbox-nav:focus-visible {
+            outline: 2px solid rgba(255,255,255,0.7);
+            outline-offset: 4px;
+        }
+
+        .lightbox-close {
+            top: calc(20px + env(safe-area-inset-top));
+            right: 20px;
+        }
+        .lightbox-nav.prev { left: 20px; top: 50%; transform: translateY(-50%); }
+        .lightbox-nav.next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: calc(22px + env(safe-area-inset-bottom));
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.85);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            font-weight: 300;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .lightbox-close { top: 14px; right: 14px; width: 42px; height: 42px; }
+            .lightbox-close svg, .lightbox-nav svg { width: 18px; height: 18px; }
+            .lightbox-nav { width: 42px; height: 42px; }
+            .lightbox-nav.prev { left: 8px; }
+            .lightbox-nav.next { right: 8px; }
+            .lightbox-stage { width: 96vw; }
+            .lightbox-counter { font-size: 10px; bottom: calc(14px + env(safe-area-inset-bottom)); }
         }
 
         /* ============================================================
@@ -1466,6 +1593,39 @@
         <div class="heart">&hearts;</div>
         <p data-i18n="footer.text">Cu drag, Daniela &amp; Cristian</p>
     </footer>
+
+    <!-- ============================================================
+         LIGHTBOX — vedere full-screen a pozelor din galerie
+         ============================================================ -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <button type="button" class="lightbox-close" id="lightboxClose"
+                data-i18n-aria-label="lightbox.closeAria" aria-label="Închide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <line x1="6" y1="6" x2="18" y2="18"/>
+                <line x1="18" y1="6" x2="6" y2="18"/>
+            </svg>
+        </button>
+
+        <button type="button" class="lightbox-nav prev" id="lightboxPrev"
+                data-i18n-aria-label="lightbox.prevAria" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 6 9 12 15 18"/>
+            </svg>
+        </button>
+
+        <button type="button" class="lightbox-nav next" id="lightboxNext"
+                data-i18n-aria-label="lightbox.nextAria" aria-label="Următor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 6 15 12 9 18"/>
+            </svg>
+        </button>
+
+        <div class="lightbox-stage">
+            <img class="lightbox-image" id="lightboxImg" alt="" draggable="false" />
+        </div>
+
+        <div class="lightbox-counter" id="lightboxCounter" aria-live="polite">1 / 4</div>
+    </div>
 
     <!-- Logica JS este in /static/js/app.js (incarcata cu defer in <head>) -->
 </body>
