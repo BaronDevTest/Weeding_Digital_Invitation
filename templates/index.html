@@ -76,14 +76,18 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html { scroll-behavior: smooth; }
-        html, body {
-            background: var(--color-page-bg);
+        html { scroll-behavior: smooth; background: #000; }
+        body {
+            /* Background NEGRU — pe iOS cu notch, zona safe-area de sus arata
+               body-ul; cu negru se continua perfect cu fundalul negru al hero-ului */
+            background: #000;
             color: var(--color-text-main);
             font-family: var(--font-serif);
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         ::selection { background: var(--color-blush-deep); color: var(--color-text-main); }
@@ -817,6 +821,10 @@
             height: 100lvh; /* "largest" viewport height — fill chiar si cand bara iOS se ascunde */
             background: #000;
             overflow: hidden;
+            /* Extinde hero-ul peste safe-area-inset-top (notch) ca videoclipul
+               sa ajunga pana sus, in loc sa lase body-ul sa apara intre status bar si video */
+            margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+            padding-top: env(safe-area-inset-top, 0px);
         }
         .hero video {
             position: absolute;
@@ -843,7 +851,7 @@
 
         .top-label {
             position: absolute;
-            top: 32px;
+            top: calc(32px + env(safe-area-inset-top, 0px));
             left: 0; right: 0;
             text-align: center;
             color: #fff;
@@ -1781,7 +1789,7 @@
 
         /* Telefoane mici — pana la 480px */
         @media (max-width: 480px) {
-            .top-label { top: 24px; letter-spacing: 0.3em; }
+            .top-label { top: calc(24px + env(safe-area-inset-top, 0px)); letter-spacing: 0.3em; }
             .scroll-hint { bottom: 24px; letter-spacing: 0.3em; }
 
             /* Perlele laterale ale cardului — mai aproape de margine ca sa nu acopere textul */
@@ -1812,7 +1820,7 @@
             .hero-names .amp { font-size: clamp(14px, 2.2vh, 20px); margin: 2px 0; }
             .hero-names .date { margin-top: 8px; font-size: 10px; }
             .scroll-hint { bottom: 14px; }
-            .top-label { top: 14px; }
+            .top-label { top: calc(14px + env(safe-area-inset-top, 0px)); }
             section.block { padding-top: clamp(40px, 8vh, 60px); padding-bottom: clamp(40px, 8vh, 60px); }
         }
 
