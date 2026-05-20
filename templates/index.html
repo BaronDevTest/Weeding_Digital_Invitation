@@ -300,7 +300,16 @@
             border-radius: 999px;
             padding: 3px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-            transition: opacity 0.4s ease;
+            /* Ascuns implicit (pe hero); devine vizibil dupa hero via .visible */
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .lang-switch.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
         }
         .lang-switch button {
             background: transparent;
@@ -1042,7 +1051,7 @@
 
         <div class="top-label" data-i18n="hero.topLabel">Vă invităm la nunta noastră</div>
 
-        <button class="unmute" id="unmuteBtn" data-i18n-aria-label="hero.unmuteAria" aria-label="Activează sunetul">&#128263;</button>
+        <button class="unmute" id="unmuteBtn" data-i18n-aria-label="hero.muteAria" aria-label="Dezactivează sunetul">&#128266;</button>
 
         <div class="lang-switch" role="group" data-i18n-aria-label="lang.switchAria" aria-label="Schimbă limba">
             <button type="button" data-lang="ro" aria-pressed="true">RO</button>

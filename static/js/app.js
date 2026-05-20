@@ -18,6 +18,7 @@
       'lang.switchAria': 'Schimbă limba',
       'hero.topLabel': 'Vă invităm la nunta noastră',
       'hero.unmuteAria': 'Activează sunetul',
+      'hero.muteAria': 'Dezactivează sunetul',
       'hero.scrollHint': 'Detalii',
       'hero.scrollHintAria': 'Vezi detaliile',
       'hero.date': '23 · 07 · 2027',
@@ -116,6 +117,7 @@
       'lang.switchAria': 'Change language',
       'hero.topLabel': 'We invite you to our wedding',
       'hero.unmuteAria': 'Unmute',
+      'hero.muteAria': 'Mute',
       'hero.scrollHint': 'Details',
       'hero.scrollHintAria': 'See details',
       'hero.date': '23 · 07 · 2027',
@@ -214,6 +216,7 @@
       'lang.switchAria': 'Сменить язык',
       'hero.topLabel': 'Приглашаем вас на нашу свадьбу',
       'hero.unmuteAria': 'Включить звук',
+      'hero.muteAria': 'Выключить звук',
       'hero.scrollHint': 'Подробнее',
       'hero.scrollHintAria': 'Подробности',
       'hero.date': '23 · 07 · 2027',
@@ -530,7 +533,15 @@
 
   function setIcon () {
     if (!video || !unmuteBtn) return;
-    unmuteBtn.innerHTML = video.muted ? '&#128263;' : '&#128266;';
+    var muted = video.muted;
+    // Icon: 🔇 cand e mut, 🔊 cand are sunet
+    unmuteBtn.innerHTML = muted ? '&#128263;' : '&#128266;';
+    // aria-label reflecta actiunea care va avea loc la click
+    var ariaKey = muted ? 'hero.unmuteAria' : 'hero.muteAria';
+    unmuteBtn.setAttribute('data-i18n-aria-label', ariaKey);
+    var lang = document.documentElement.getAttribute('lang') || DEFAULT_LANG;
+    var dict = TRANSLATIONS[lang] || TRANSLATIONS[DEFAULT_LANG];
+    if (dict[ariaKey]) unmuteBtn.setAttribute('aria-label', dict[ariaKey]);
   }
 
   if (video) {
@@ -608,6 +619,26 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ============================================================
+  // Lang switcher visibility — ascuns peste hero, vizibil dupa
+  // ============================================================
+  var heroSection = document.getElementById('hero');
+  var langSwitchEl = document.querySelector('.lang-switch');
+  if (heroSection && langSwitchEl) {
+    if ('IntersectionObserver' in window) {
+      var heroIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          // Cand mai putin de 20% din hero e vizibil -> aratam switcher-ul
+          langSwitchEl.classList.toggle('visible', !entry.isIntersecting);
+        });
+      }, { threshold: 0.2 });
+      heroIO.observe(heroSection);
+    } else {
+      // Fallback: arata-l mereu pentru browsere vechi
+      langSwitchEl.classList.add('visible');
+    }
+  }
 
   // ============================================================
   // Scroll reveal (IntersectionObserver)
