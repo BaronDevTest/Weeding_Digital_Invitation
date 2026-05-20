@@ -1064,47 +1064,43 @@
   });
 
   // ============================================================
-  // Loader — animatie plic + skip + localStorage flag
+  // Loader — animatia ruleaza complet la FIECARE vizita
+  // (fara skip persistent pe localStorage; doar prefers-reduced-motion
+  //  scurteaza la un fade scurt pentru accesibilitate)
   // ============================================================
   (function setupLoader() {
     var loader = document.getElementById('loader');
     if (!loader) return;
 
     var skipBtn = document.getElementById('loaderSkip');
-    var INTRO_KEY = 'dc_seen_intro';
-    // Timeline: branches draw (0.4-1.9) → leaves bloom + buds (1.1-2.05) →
-    // monogram in (1.8-3.0) → names handwrite (2.4-3.7) →
-    // gold line + dot (4.2-5.4) → date letter-spacing (4.6-6.1) → hold + fade
+    // Timeline: branches draw (0.4-1.9) -> leaves bloom + buds (1.1-2.05) ->
+    // monogram in (1.8-3.0) -> names handwrite (2.4-3.7) ->
+    // gold line + dot (4.2-5.4) -> date letter-spacing (4.6-6.1) -> hold + fade
     var ANIM_DURATION = 6500;
     var SKIP_REVEAL_AFTER = 1200;
 
-    var seenBefore = false;
-    try { seenBefore = localStorage.getItem(INTRO_KEY) === '1'; } catch (e) { /* storage blocked */ }
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Blocheaza scroll-ul pe durata animatiei (CSS scroll-lock prin clasa pe body)
+    // Blocheaza scroll-ul pe durata animatiei
     document.body.style.overflow = 'hidden';
 
-    function hideLoader(persist) {
+    function hideLoader() {
       loader.classList.add('hidden');
       document.body.style.overflow = '';
-      if (persist) {
-        try { localStorage.setItem(INTRO_KEY, '1'); } catch (e) { /* ignore */ }
-      }
     }
 
-    // Skip cu buton — fade rapid, fara persistare
+    // Skip cu buton — fade rapid
     if (skipBtn) {
-      skipBtn.addEventListener('click', function () { hideLoader(false); });
+      skipBtn.addEventListener('click', hideLoader);
     }
 
-    if (seenBefore || reduceMotion) {
-      // Skip animatia — fade scurt
-      setTimeout(function () { hideLoader(false); }, 300);
+    if (reduceMotion) {
+      // Accesibilitate: scurteaza la un fade rapid
+      setTimeout(hideLoader, 300);
       return;
     }
 
-    // Animatia ruleaza complet — pornim timerele IMEDIAT,
+    // Animatia ruleaza complet — timerele pornesc IMEDIAT,
     // sincronizat cu animatiile CSS (care nu asteapta window.load)
     setTimeout(function () {
       if (skipBtn && !loader.classList.contains('hidden')) {
@@ -1113,7 +1109,7 @@
     }, SKIP_REVEAL_AFTER);
 
     setTimeout(function () {
-      if (!loader.classList.contains('hidden')) hideLoader(true);
+      if (!loader.classList.contains('hidden')) hideLoader();
     }, ANIM_DURATION);
   })();
 
