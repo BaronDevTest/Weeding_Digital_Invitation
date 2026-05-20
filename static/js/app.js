@@ -115,6 +115,7 @@
       'footer.text': 'Cu drag, Daniela & Cristian',
 
       'loader.skip': 'Sari peste',
+      'loader.date': '23 · IULIE · 2027',
 
       'daysCounter.eyebrow': 'Povestea noastră în cifre',
       'daysCounter.title': 'De atunci pentru totdeauna',
@@ -258,6 +259,7 @@
       'footer.text': 'With love, Daniela & Cristian',
 
       'loader.skip': 'Skip',
+      'loader.date': '23 · JULY · 2027',
 
       'daysCounter.eyebrow': 'Our story in numbers',
       'daysCounter.title': 'From then to forever',
@@ -401,6 +403,7 @@
       'footer.text': 'С любовью, Даниэла и Кристиан',
 
       'loader.skip': 'Пропустить',
+      'loader.date': '23 · ИЮЛЯ · 2027',
 
       'daysCounter.eyebrow': 'Наша история в цифрах',
       'daysCounter.title': 'С тех пор и навсегда',
@@ -1069,11 +1072,11 @@
 
     var skipBtn = document.getElementById('loaderSkip');
     var INTRO_KEY = 'dc_seen_intro';
-    // Timeline: env-appear (0.1-0.8) → seal pulse + tremble (0.85-1.8) →
-    // seal fall + particles (1.8-2.75) → flap opens (2.7-3.65) →
-    // card emerges (3.25-4.4) → flower appears (4.0-4.6) → hold + fade
-    var ANIM_DURATION = 5200;
-    var SKIP_REVEAL_AFTER = 1100;
+    // Timeline: branches draw (0.4-1.9) → leaves bloom + buds (1.1-2.05) →
+    // monogram in (1.8-3.0) → names handwrite (2.4-3.7) →
+    // gold line + dot (4.2-5.4) → date letter-spacing (4.6-6.1) → hold + fade
+    var ANIM_DURATION = 6500;
+    var SKIP_REVEAL_AFTER = 1200;
 
     var seenBefore = false;
     try { seenBefore = localStorage.getItem(INTRO_KEY) === '1'; } catch (e) { /* storage blocked */ }
