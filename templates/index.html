@@ -480,7 +480,12 @@
 
         .loader {
             position: fixed;
+            top: 0; right: 0; bottom: 0; left: 0;
             inset: 0;
+            /* Fallback pentru iOS unde inset:0 nu acopera safe-areas */
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
             z-index: 9999;
             background:
                 radial-gradient(ellipse at 25% 15%, rgba(232,201,136,0.10) 0%, transparent 45%),
@@ -491,6 +496,9 @@
             justify-content: center;
             overflow: hidden;
             transition: opacity 0.9s ease, visibility 0.9s ease;
+            /* Padding pentru safe area iOS (notch + home indicator) */
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         .loader.hidden {
             opacity: 0;
@@ -544,7 +552,8 @@
         .loader-scene {
             position: relative;
             z-index: 2;
-            width: min(92vw, 480px);
+            width: min(96vw, 560px);
+            padding: 0 clamp(8px, 3vw, 24px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -618,18 +627,20 @@
         .loader-name {
             display: block;
             width: fit-content;
+            max-width: 100%;
             margin: 0 auto;
+            padding-right: 0.15em;
             font-family: var(--font-script);
-            font-size: clamp(46px, 11vw, 72px);
+            font-size: clamp(42px, 11vw, 72px);
             color: var(--color-text-main);
             line-height: 1.05;
-            clip-path: inset(-15% 100% -15% 0);
+            clip-path: inset(-20% 100% -20% -5%);
             animation: loader-handwrite 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
         .loader-name.bride { animation-delay: 2.4s; }
         .loader-name.groom { animation-delay: 3.4s; }
         @keyframes loader-handwrite {
-            to { clip-path: inset(-15% -3% -15% 0); }
+            to { clip-path: inset(-20% -20% -20% -5%); }
         }
 
         .loader-amp {
@@ -800,18 +811,21 @@
            ============================================================ */
         .hero {
             position: relative;
-            width: 100%;
-            height: 100vh;
-            height: 100dvh;
+            width: 100vw;
+            min-height: 100vh;
+            min-height: 100dvh;
+            height: 100lvh; /* "largest" viewport height — fill chiar si cand bara iOS se ascunde */
             background: #000;
             overflow: hidden;
         }
         .hero video {
             position: absolute;
+            top: 0; left: 0;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
         }
         .hero-overlay {
             position: absolute;
