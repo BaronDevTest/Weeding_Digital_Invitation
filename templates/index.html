@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Daniela &amp; Cristian &mdash; 23 Iulie 2027</title>
     <meta name="description" content="Vă invităm la nunta noastră — Daniela &amp; Cristian, 23 Iulie 2027, Chișinău" />
     <meta name="theme-color" content="#FBE0E5" />
@@ -35,10 +35,10 @@
             --font-serif: "Cormorant Garamond", Georgia, serif;
             --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-            --size-name: 64px;
-            --size-amp: 22px;
-            --size-label: 11px;
-            --size-italic: 13px;
+            --size-name: clamp(44px, 9vw, 68px);
+            --size-amp: clamp(18px, 3.2vw, 24px);
+            --size-label: clamp(10px, 1.6vw, 11px);
+            --size-italic: clamp(12px, 1.9vw, 14px);
 
             --shadow-card: 0 20px 60px rgba(107, 32, 48, 0.15);
             --shadow-soft: 0 8px 24px rgba(107, 32, 48, 0.08);
@@ -172,15 +172,15 @@
         .hero-names {
             position: absolute;
             left: 0; right: 0;
-            bottom: 130px;
+            bottom: clamp(96px, 16vh, 150px);
             text-align: center;
             color: #fff;
             z-index: 2;
-            padding: 0 24px;
+            padding: 0 clamp(16px, 5vw, 32px);
         }
         .hero-names .script {
             font-family: var(--font-script);
-            font-size: 64px;
+            font-size: clamp(46px, 12vw, 84px);
             line-height: 1;
             text-shadow: 0 2px 18px rgba(0,0,0,0.6);
             opacity: 0;
@@ -190,7 +190,7 @@
         .hero-names .amp {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 22px;
+            font-size: clamp(18px, 3.5vw, 26px);
             color: #FBE8EC;
             margin: 6px 0;
             display: block;
@@ -198,10 +198,10 @@
             animation: fade-up 1.6s ease-out 1.3s forwards;
         }
         .hero-names .date {
-            margin-top: 20px;
+            margin-top: clamp(14px, 2.5vw, 22px);
             font-family: var(--font-sans);
             font-weight: 300;
-            font-size: 11px;
+            font-size: clamp(10px, 1.6vw, 12px);
             letter-spacing: 0.4em;
             text-transform: uppercase;
             color: rgba(255,255,255,0.95);
@@ -258,13 +258,16 @@
             cursor: pointer;
             transition: background 0.3s ease;
         }
-        .unmute:hover { background: rgba(0,0,0,0.65); }
+        @media (hover: hover) and (pointer: fine) {
+            .unmute:hover { background: rgba(0,0,0,0.65); }
+        }
+        .unmute:active { background: rgba(0,0,0,0.65); }
 
         /* ============================================================
            SECTION COMMON
            ============================================================ */
         section.block {
-            padding: 80px 24px;
+            padding: clamp(56px, 10vw, 100px) clamp(18px, 5vw, 32px);
             position: relative;
         }
         section.block.cream { background: var(--color-cream); }
@@ -272,7 +275,7 @@
 
         .section-eyebrow {
             font-family: var(--font-sans);
-            font-size: 11px;
+            font-size: clamp(10px, 1.4vw, 11px);
             letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--color-accent);
@@ -282,11 +285,11 @@
         }
         .section-title {
             font-family: var(--font-script);
-            font-size: 48px;
+            font-size: clamp(34px, 7vw, 54px);
             line-height: 1;
             color: var(--color-text-main);
             text-align: center;
-            margin-bottom: 38px;
+            margin-bottom: clamp(28px, 5vw, 42px);
         }
         .divider {
             display: flex;
@@ -343,7 +346,7 @@
         .quote-block p {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 21px;
+            font-size: clamp(17px, 3vw, 22px);
             line-height: 1.55;
             color: var(--color-text-main);
             margin-bottom: 24px;
@@ -364,7 +367,7 @@
         .countdown {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: clamp(6px, 1.6vw, 12px);
             max-width: 500px;
             margin: 0 auto;
         }
@@ -372,7 +375,7 @@
             background: rgba(255,255,255,0.6);
             border: 0.5px solid var(--color-frame);
             border-radius: 6px;
-            padding: 22px 8px 16px;
+            padding: clamp(14px, 3.5vw, 24px) clamp(4px, 1.2vw, 8px) clamp(10px, 2.5vw, 16px);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -388,7 +391,7 @@
         .countdown-num {
             font-family: var(--font-serif);
             font-weight: 500;
-            font-size: 40px;
+            font-size: clamp(26px, 7vw, 44px);
             line-height: 1;
             color: var(--color-text-main);
             display: block;
@@ -397,8 +400,8 @@
             margin-top: 8px;
             font-family: var(--font-sans);
             font-weight: 300;
-            font-size: 9px;
-            letter-spacing: 0.3em;
+            font-size: clamp(8px, 1.3vw, 10px);
+            letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--color-label);
         }
@@ -424,7 +427,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 56px 32px;
+            padding: clamp(36px, 8vw, 64px) clamp(20px, 6vw, 36px);
             text-align: center;
         }
         .card::before {
@@ -487,7 +490,7 @@
         .story::before {
             content: "";
             position: absolute;
-            left: 30px;
+            left: clamp(20px, 5vw, 30px);
             top: 16px;
             bottom: 16px;
             width: 0.5px;
@@ -495,13 +498,13 @@
         }
         .story-item {
             position: relative;
-            padding-left: 72px;
-            padding-bottom: 48px;
+            padding-left: clamp(52px, 12vw, 72px);
+            padding-bottom: clamp(32px, 6vw, 48px);
         }
         .story-item:last-child { padding-bottom: 0; }
         .story-pearl {
             position: absolute;
-            left: 18px;
+            left: clamp(8px, 2.5vw, 18px);
             top: 6px;
             width: 24px; height: 24px;
             background: var(--color-cream);
@@ -513,7 +516,7 @@
         .story-pearl svg { width: 16px; height: 16px; }
         .story-date {
             font-family: var(--font-sans);
-            font-size: 10px;
+            font-size: clamp(9px, 1.4vw, 11px);
             letter-spacing: 0.35em;
             text-transform: uppercase;
             color: var(--color-accent);
@@ -522,7 +525,7 @@
         }
         .story-title {
             font-family: var(--font-script);
-            font-size: 30px;
+            font-size: clamp(22px, 4.5vw, 32px);
             color: var(--color-text-main);
             line-height: 1;
             margin-bottom: 10px;
@@ -530,7 +533,7 @@
         .story-text {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 16px;
+            font-size: clamp(14px, 2.1vw, 17px);
             line-height: 1.55;
             color: var(--color-label);
         }
@@ -552,23 +555,26 @@
             background: var(--color-cream);
             border: 0.5px solid var(--color-frame);
             border-radius: 6px;
-            padding: 36px 24px;
+            padding: clamp(24px, 5vw, 40px) clamp(16px, 4vw, 28px);
             text-align: center;
             position: relative;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .event-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card);
+        @media (hover: hover) and (pointer: fine) {
+            .event-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-card);
+            }
         }
         .event-card .icon {
-            width: 48px; height: 48px;
+            width: clamp(40px, 8vw, 52px);
+            height: clamp(40px, 8vw, 52px);
             margin: 0 auto 18px;
             color: var(--color-accent);
         }
         .event-type {
             font-family: var(--font-sans);
-            font-size: 10px;
+            font-size: clamp(9px, 1.4vw, 11px);
             letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--color-accent);
@@ -577,14 +583,14 @@
         }
         .event-name {
             font-family: var(--font-script);
-            font-size: 36px;
+            font-size: clamp(28px, 5.5vw, 40px);
             color: var(--color-text-main);
             line-height: 1;
             margin-bottom: 18px;
         }
         .event-meta {
             font-family: var(--font-serif);
-            font-size: 16px;
+            font-size: clamp(14px, 2.1vw, 17px);
             line-height: 1.7;
             color: var(--color-text-main);
         }
@@ -593,7 +599,7 @@
             display: block;
             margin-top: 8px;
             font-style: italic;
-            font-size: 13px;
+            font-size: clamp(12px, 1.8vw, 14px);
             color: var(--color-label);
         }
 
@@ -611,9 +617,12 @@
         .map-frame {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 4 / 3;
             background: #e8d4d8;
             overflow: hidden;
+        }
+        @media (min-width: 600px) {
+            .map-frame { aspect-ratio: 16 / 10; }
         }
         .map-frame iframe {
             position: absolute;
@@ -623,12 +632,12 @@
             filter: saturate(0.85) contrast(0.95);
         }
         .location-info {
-            padding: 28px 24px;
+            padding: clamp(22px, 4vw, 32px) clamp(18px, 4vw, 28px);
             text-align: center;
         }
         .location-name {
             font-family: var(--font-script);
-            font-size: 38px;
+            font-size: clamp(28px, 5.5vw, 42px);
             color: var(--color-text-main);
             line-height: 1;
             margin-bottom: 12px;
@@ -636,7 +645,7 @@
         .location-address {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 16px;
+            font-size: clamp(14px, 2.1vw, 17px);
             color: var(--color-label);
             margin-bottom: 22px;
         }
@@ -644,6 +653,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            min-height: 44px;
             padding: 13px 24px;
             border: 0.6px solid var(--color-accent);
             border-radius: 999px;
@@ -651,15 +661,17 @@
             color: var(--color-text-main);
             text-decoration: none;
             font-family: var(--font-sans);
-            font-size: 10px;
+            font-size: clamp(9px, 1.3vw, 11px);
             letter-spacing: 0.3em;
             text-transform: uppercase;
             font-weight: 400;
             transition: background 0.3s ease, transform 0.3s ease;
         }
-        .map-button:hover {
-            background: var(--color-blush-deep);
-            transform: translateY(-2px);
+        @media (hover: hover) and (pointer: fine) {
+            .map-button:hover {
+                background: var(--color-blush-deep);
+                transform: translateY(-2px);
+            }
         }
 
         /* ============================================================
@@ -671,23 +683,23 @@
         }
         .program-row {
             display: grid;
-            grid-template-columns: 90px 1fr;
-            gap: 24px;
+            grid-template-columns: clamp(64px, 18vw, 100px) 1fr;
+            gap: clamp(14px, 3.5vw, 28px);
             align-items: start;
-            padding: 20px 0;
+            padding: clamp(16px, 3vw, 22px) 0;
             border-bottom: 0.5px dashed rgba(168, 104, 120, 0.3);
         }
         .program-row:last-child { border-bottom: 0; }
         .program-time {
             font-family: var(--font-serif);
             font-weight: 500;
-            font-size: 22px;
+            font-size: clamp(18px, 3vw, 24px);
             color: var(--color-text-main);
             text-align: right;
         }
         .program-detail .title {
             font-family: var(--font-script);
-            font-size: 26px;
+            font-size: clamp(20px, 4vw, 28px);
             color: var(--color-text-main);
             line-height: 1;
             margin-bottom: 4px;
@@ -695,7 +707,7 @@
         .program-detail .desc {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 14px;
+            font-size: clamp(13px, 1.9vw, 15px);
             color: var(--color-label);
             line-height: 1.4;
         }
@@ -710,7 +722,7 @@
         }
         .dress-title {
             font-family: var(--font-script);
-            font-size: 40px;
+            font-size: clamp(28px, 6vw, 44px);
             color: var(--color-text-main);
             margin-bottom: 14px;
             line-height: 1;
@@ -718,7 +730,7 @@
         .dress-desc {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 17px;
+            font-size: clamp(15px, 2.3vw, 18px);
             line-height: 1.55;
             color: var(--color-label);
             margin-bottom: 28px;
@@ -726,16 +738,20 @@
         .swatches {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: clamp(8px, 2.5vw, 16px);
+            flex-wrap: wrap;
         }
         .swatch {
-            width: 52px; height: 52px;
+            width: clamp(40px, 9vw, 56px);
+            height: clamp(40px, 9vw, 56px);
             border-radius: 50%;
             border: 1px solid rgba(255,255,255,0.4);
             box-shadow: var(--shadow-soft);
             transition: transform 0.3s ease;
         }
-        .swatch:hover { transform: scale(1.08); }
+        @media (hover: hover) and (pointer: fine) {
+            .swatch:hover { transform: scale(1.08); }
+        }
         .swatch-label {
             display: block;
             margin-top: 10px;
@@ -768,9 +784,12 @@
             position: relative;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card);
+        @media (hover: hover) and (pointer: fine) {
+            .gallery-item:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-card);
+            }
+            .gallery-item:hover img { transform: scale(1.04); }
         }
         .gallery-item img {
             width: 100%; height: 100%;
@@ -778,7 +797,6 @@
             display: block;
             transition: transform 0.6s ease;
         }
-        .gallery-item:hover img { transform: scale(1.04); }
         .gallery-placeholder {
             position: absolute;
             inset: 0;
@@ -800,7 +818,7 @@
             background: var(--color-cream);
             border: 0.5px solid var(--color-frame);
             border-radius: 8px;
-            padding: 32px 24px;
+            padding: clamp(24px, 5vw, 36px) clamp(18px, 4vw, 28px);
         }
         .field {
             margin-bottom: 18px;
@@ -867,23 +885,28 @@
 
         .submit-btn {
             width: 100%;
+            min-height: 48px;
             padding: 14px;
             border: none;
             background: var(--color-text-main);
             color: var(--color-cream);
             font-family: var(--font-sans);
-            font-size: 11px;
+            font-size: clamp(10px, 1.5vw, 12px);
             letter-spacing: 0.4em;
             text-transform: uppercase;
             font-weight: 400;
             border-radius: 4px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
         }
-        .submit-btn:hover {
-            background: var(--color-accent);
-            transform: translateY(-2px);
+        @media (hover: hover) and (pointer: fine) {
+            .submit-btn:hover {
+                background: var(--color-accent);
+                transform: translateY(-2px);
+            }
         }
+        .submit-btn:active { background: var(--color-accent); }
         .form-success {
             text-align: center;
             padding: 40px 20px;
@@ -926,21 +949,21 @@
         .final-msg {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 22px;
+            font-size: clamp(17px, 3vw, 24px);
             line-height: 1.5;
             color: var(--color-text-main);
             margin-bottom: 30px;
         }
         .final-names {
             font-family: var(--font-script);
-            font-size: 56px;
+            font-size: clamp(40px, 9vw, 64px);
             color: var(--color-text-main);
             line-height: 1.1;
         }
         .final-date {
             margin-top: 18px;
             font-family: var(--font-sans);
-            font-size: 11px;
+            font-size: clamp(10px, 1.5vw, 12px);
             letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--color-accent);
@@ -951,7 +974,7 @@
            FOOTER
            ============================================================ */
         footer {
-            padding: 30px 24px 36px;
+            padding: 30px clamp(18px, 5vw, 32px) calc(36px + env(safe-area-inset-bottom));
             text-align: center;
             background: var(--color-text-main);
             color: var(--color-cream);
@@ -972,16 +995,58 @@
         }
 
         /* ============================================================
-           RESPONSIVE
+           RESPONSIVE — ajustari pentru ecrane mici / landscape / etc.
+           Tipografia foloseste deja clamp() in regulile de baza, deci
+           aici sunt doar fixe de layout care nu pot fi facute cu clamp.
            ============================================================ */
-        @media (max-width: 380px) {
-            .hero-names .script { font-size: 54px; }
-            .section-title { font-size: 42px; }
-            .name { font-size: 56px; }
-            .countdown-num { font-size: 32px; }
-            .countdown { gap: 6px; }
-            .countdown-cell { padding: 18px 4px 12px; }
-            section.block { padding: 64px 18px; }
+
+        /* Telefoane mici — pana la 480px */
+        @media (max-width: 480px) {
+            .top-label { top: 24px; letter-spacing: 0.3em; }
+            .scroll-hint { bottom: 24px; letter-spacing: 0.3em; }
+            .unmute { top: 16px; right: 16px; }
+
+            /* Perlele laterale ale cardului — mai aproape de margine ca sa nu acopere textul */
+            .pearls-left  { left: 6px;  width: 16px; }
+            .pearls-right { right: 6px; width: 16px; }
+            .pearls-top, .pearls-bottom { padding: 0 18px; }
+            .pearls-top .group, .pearls-bottom .group { gap: 12px; }
+            .pearl { width: 9px; height: 9px; }
+        }
+
+        /* Telefoane foarte mici — pana la 360px */
+        @media (max-width: 360px) {
+            section.block { padding-left: 14px; padding-right: 14px; }
+            .countdown { gap: 5px; }
+            .countdown-cell { padding: 12px 2px 10px; }
+            .countdown-label { letter-spacing: 0.18em; }
+            .pearls-top .group, .pearls-bottom .group { gap: 8px; }
+            .pearls-left, .pearls-right { display: none; }
+            .card { aspect-ratio: 4 / 6; }
+        }
+
+        /* Landscape pe telefon — hero-ul nu trebuie sa "manance" tot ecranul */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero-names {
+                bottom: clamp(20px, 8vh, 56px);
+            }
+            .hero-names .script { font-size: clamp(32px, 8vh, 48px); }
+            .hero-names .amp { font-size: clamp(14px, 2.2vh, 20px); margin: 2px 0; }
+            .hero-names .date { margin-top: 8px; font-size: 10px; }
+            .scroll-hint { bottom: 14px; }
+            .top-label { top: 14px; }
+            section.block { padding-top: clamp(40px, 8vh, 60px); padding-bottom: clamp(40px, 8vh, 60px); }
+        }
+
+        /* Touch devices — dezactiveaza orice efect care depinde de hover */
+        @media (hover: none) {
+            .event-card,
+            .gallery-item,
+            .map-button,
+            .submit-btn,
+            .swatch {
+                transition: none;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
