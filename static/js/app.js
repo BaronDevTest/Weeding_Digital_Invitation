@@ -26,7 +26,7 @@
 
       'quote.text': '„Iubirea este răbdătoare, iubirea este binevoitoare, nu invidiază, nu se laudă, nu se mândrește, nu se poartă necuviincios... iubirea nu cade niciodată."',
       'quote.blessing': 'Cu binecuvântarea părinților',
-      'quote.parents': 'Iurie & Aliona · Vasile & Maria',
+      'quote.parents': 'Veceslav & Liliana · Liviu & Tatiana',
 
       'countdown.eyebrow': 'Numărătoarea inversă',
       'countdown.title': 'Mai sunt',
@@ -169,7 +169,7 @@
 
       'quote.text': '„Love is patient, love is kind. It does not envy, it does not boast, it is not proud, it does not dishonor others... Love never fails."',
       'quote.blessing': 'With the blessing of our parents',
-      'quote.parents': 'Iurie & Aliona · Vasile & Maria',
+      'quote.parents': 'Veceslav & Liliana · Liviu & Tatiana',
 
       'countdown.eyebrow': 'Counting down',
       'countdown.title': 'Just',
@@ -312,7 +312,7 @@
 
       'quote.text': '„Любовь терпелива, любовь добра. Она не завидует, она не превозносится, не гордится, не бесчинствует... Любовь никогда не перестаёт."',
       'quote.blessing': 'С благословения родителей',
-      'quote.parents': 'Юрий и Алёна · Василий и Мария',
+      'quote.parents': 'Вячеслав и Лилиана · Ливиу и Татьяна',
 
       'countdown.eyebrow': 'Обратный отсчёт',
       'countdown.title': 'Осталось',
