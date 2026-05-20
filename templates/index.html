@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Daniela &amp; Cristian &mdash; 23 Iulie 2027</title>
+    <meta name="description" content="Vă invităm la nunta noastră — Daniela &amp; Cristian, 23 Iulie 2027, Chișinău" />
+    <meta name="theme-color" content="#FBE0E5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARIABILE & RESET
+           ============================================================ */
+        :root {
+            /* Paleta */
+            --color-bg: #FBE0E5;
+            --color-frame: #C68B95;
+            --color-text-main: #6B2030;
+            --color-accent: #A86878;
+            --color-label: #8B4A5A;
+            --color-cream: #FAF4ED;
+            --color-blush-deep: #E8B5BF;
+            --color-page-bg: #FAF4ED;
+
+            --pearl-base-0: #FFFFFF;
+            --pearl-base-1: #FBE8EC;
+            --pearl-base-2: #D89AA8;
+
+            /* Tipografie */
+            --font-script: "Great Vibes", "Allura", cursive;
+            --font-serif: "Cormorant Garamond", Georgia, serif;
+            --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+            --size-name: 64px;
+            --size-amp: 22px;
+            --size-label: 11px;
+            --size-italic: 13px;
+
+            --shadow-card: 0 20px 60px rgba(107, 32, 48, 0.15);
+            --shadow-soft: 0 8px 24px rgba(107, 32, 48, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+        html, body {
+            background: var(--color-page-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-serif);
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--color-blush-deep); color: var(--color-text-main); }
+
+        /* ============================================================
+           LOADING SCREEN
+           ============================================================ */
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--color-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-pearl {
+            width: 60px; height: 60px;
+            animation: pearl-spin 2.4s ease-in-out infinite;
+        }
+        @keyframes pearl-spin {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50%      { transform: scale(1.15); filter: brightness(1.15); }
+        }
+        .loader-text {
+            margin-top: 28px;
+            font-family: var(--font-script);
+            font-size: 32px;
+            color: var(--color-text-main);
+            opacity: 0;
+            animation: fade-up 1.4s ease-out 0.5s forwards;
+        }
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================================
+           FALLING PETALS (animație globală)
+           ============================================================ */
+        .petals {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+        .petal {
+            position: absolute;
+            top: -30px;
+            width: 14px; height: 14px;
+            background: radial-gradient(ellipse at 30% 30%, #FBE8EC, #D89AA8 70%, #A86878);
+            border-radius: 50% 0 50% 0;
+            opacity: 0.7;
+            animation: petal-fall linear infinite;
+        }
+        @keyframes petal-fall {
+            0%   { transform: translate(0, -20px) rotate(0deg);   opacity: 0; }
+            10%  { opacity: 0.7; }
+            90%  { opacity: 0.7; }
+            100% { transform: translate(40px, 100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ============================================================
+           HERO — videoclip landing
+           ============================================================ */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            background: #000;
+            overflow: hidden;
+        }
+        .hero video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.30) 0%,
+                rgba(0,0,0,0) 28%,
+                rgba(0,0,0,0) 55%,
+                rgba(0,0,0,0.80) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .top-label {
+            position: absolute;
+            top: 32px;
+            left: 0; right: 0;
+            text-align: center;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 300;
+            z-index: 2;
+            opacity: 0;
+            animation: fade-up 1.4s ease-out 0.8s forwards;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-names {
+            position: absolute;
+            left: 0; right: 0;
+            bottom: 130px;
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            padding: 0 24px;
+        }
+        .hero-names .script {
+            font-family: var(--font-script);
+            font-size: 64px;
+            line-height: 1;
+            text-shadow: 0 2px 18px rgba(0,0,0,0.6);
+            opacity: 0;
+        }
+        .hero-names .script.bride { animation: fade-up 1.6s ease-out 1.0s forwards; }
+        .hero-names .script.groom { animation: fade-up 1.6s ease-out 1.6s forwards; }
+        .hero-names .amp {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 22px;
+            color: #FBE8EC;
+            margin: 6px 0;
+            display: block;
+            opacity: 0;
+            animation: fade-up 1.6s ease-out 1.3s forwards;
+        }
+        .hero-names .date {
+            margin-top: 20px;
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.95);
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: fade-up 1.6s ease-out 2.0s forwards;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            left: 50%;
+            bottom: 32px;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: rgba(255,255,255,0.92);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-sans);
+            font-size: 9px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0;
+            animation: fade-up 1.6s ease-out 2.4s forwards, bob 2.4s ease-in-out 2.4s infinite;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+        .scroll-hint svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.4)); }
+        @keyframes bob {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .unmute {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            z-index: 3;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #fff;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .unmute:hover { background: rgba(0,0,0,0.65); }
+
+        /* ============================================================
+           SECTION COMMON
+           ============================================================ */
+        section.block {
+            padding: 80px 24px;
+            position: relative;
+        }
+        section.block.cream { background: var(--color-cream); }
+        section.block.blush { background: var(--color-bg); }
+
+        .section-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            text-align: center;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-family: var(--font-script);
+            font-size: 48px;
+            line-height: 1;
+            color: var(--color-text-main);
+            text-align: center;
+            margin-bottom: 38px;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 18px auto 40px;
+        }
+        .divider .line {
+            width: 50px; height: 0.6px;
+            background: linear-gradient(to var(--dir, right), transparent, var(--color-accent));
+        }
+        .divider .line.r { --dir: left; }
+        .divider .pearl-mini {
+            width: 9px; height: 9px;
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+        }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0.0s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+        /* ============================================================
+           QUOTE — Cu binecuvântarea părinților
+           ============================================================ */
+        .quote-block {
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .quote-block .pearl-cluster {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 28px;
+        }
+        .quote-block .pearl-cluster svg { width: 8px; height: 8px; }
+        .quote-block p {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 21px;
+            line-height: 1.55;
+            color: var(--color-text-main);
+            margin-bottom: 24px;
+        }
+        .quote-block .parents {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--color-label);
+            font-weight: 300;
+        }
+        .quote-block .parents span { display: block; margin-top: 6px; color: var(--color-text-main); font-weight: 400; letter-spacing: 0.2em; }
+
+        /* ============================================================
+           COUNTDOWN
+           ============================================================ */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .countdown-cell {
+            background: rgba(255,255,255,0.6);
+            border: 0.5px solid var(--color-frame);
+            border-radius: 6px;
+            padding: 22px 8px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .countdown-cell::before {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            border: 0.4px solid rgba(168, 104, 120, 0.25);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+        .countdown-num {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: 40px;
+            line-height: 1;
+            color: var(--color-text-main);
+            display: block;
+        }
+        .countdown-label {
+            margin-top: 8px;
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-label);
+        }
+
+        /* ============================================================
+           SAVE THE DATE CARD
+           ============================================================ */
+        .card-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .card {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            aspect-ratio: 9 / 14;
+            background: var(--color-bg);
+            border-radius: 4px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 56px 32px;
+            text-align: center;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 22px;
+            border: 0.4px solid var(--color-frame);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .pearls-top, .pearls-bottom, .pearls-left, .pearls-right {
+            position: absolute;
+            pointer-events: none;
+        }
+        .pearls-top    { top: 12px; left: 0; right: 0; height: 22px; display: flex; justify-content: space-between; padding: 0 28px; }
+        .pearls-bottom { bottom: 12px; left: 0; right: 0; height: 22px; display: flex; justify-content: space-between; padding: 0 28px; }
+        .pearls-top .group, .pearls-bottom .group { display: flex; gap: 20px; align-items: center; }
+        .pearls-left  { top: 80px; bottom: 80px; left: 12px; width: 22px; }
+        .pearls-right { top: 80px; bottom: 80px; right: 12px; width: 22px; }
+        .pearls-left svg, .pearls-right svg { width: 100%; height: 100%; }
+
+        .pearl {
+            width: 12px; height: 12px;
+            display: block;
+            animation: shimmer 3.6s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50%      { filter: brightness(1.15); }
+        }
+
+        .label { font-family: var(--font-sans); font-size: var(--size-label); letter-spacing: 0.35em; text-transform: uppercase; color: var(--color-label); font-weight: 300; }
+        .label-date { color: var(--color-text-main); }
+        .italic { font-family: var(--font-serif); font-style: italic; font-size: var(--size-italic); color: var(--color-label); }
+        .names { margin: 14px 0 18px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .name { font-family: var(--font-script); font-size: var(--size-name); line-height: 1; color: var(--color-text-main); font-weight: 400; }
+        .amp-card { font-family: var(--font-serif); font-style: italic; font-size: var(--size-amp); color: var(--color-accent); margin: 4px 0; }
+
+        .pearl-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 12px 0 6px;
+        }
+        .pearl-line .dash { width: 28px; height: 0.6px; background: var(--color-accent); }
+        .pearl-line .pearl-mini { width: 7px; height: 7px; }
+
+        .gradient-line { margin: 22px auto; width: 70%; height: 1px; background: linear-gradient(to right, transparent, #D89AA8, transparent); }
+
+        /* ============================================================
+           STORY TIMELINE
+           ============================================================ */
+        .story {
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .story::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 16px;
+            bottom: 16px;
+            width: 0.5px;
+            background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
+        }
+        .story-item {
+            position: relative;
+            padding-left: 72px;
+            padding-bottom: 48px;
+        }
+        .story-item:last-child { padding-bottom: 0; }
+        .story-pearl {
+            position: absolute;
+            left: 18px;
+            top: 6px;
+            width: 24px; height: 24px;
+            background: var(--color-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .story-pearl svg { width: 16px; height: 16px; }
+        .story-date {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        .story-title {
+            font-family: var(--font-script);
+            font-size: 30px;
+            color: var(--color-text-main);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .story-text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-label);
+        }
+
+        /* ============================================================
+           EVENT DETAILS
+           ============================================================ */
+        .events {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        @media (min-width: 720px) {
+            .events { grid-template-columns: 1fr 1fr; }
+        }
+        .event-card {
+            background: var(--color-cream);
+            border: 0.5px solid var(--color-frame);
+            border-radius: 6px;
+            padding: 36px 24px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+        .event-card .icon {
+            width: 48px; height: 48px;
+            margin: 0 auto 18px;
+            color: var(--color-accent);
+        }
+        .event-type {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        .event-name {
+            font-family: var(--font-script);
+            font-size: 36px;
+            color: var(--color-text-main);
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .event-meta {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-main);
+        }
+        .event-meta strong { font-weight: 500; }
+        .event-meta .small {
+            display: block;
+            margin-top: 8px;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--color-label);
+        }
+
+        /* ============================================================
+           LOCATION + MAP
+           ============================================================ */
+        .location-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.5);
+            border: 0.5px solid var(--color-frame);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .map-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #e8d4d8;
+            overflow: hidden;
+        }
+        .map-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            border: 0;
+            filter: saturate(0.85) contrast(0.95);
+        }
+        .location-info {
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .location-name {
+            font-family: var(--font-script);
+            font-size: 38px;
+            color: var(--color-text-main);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        .location-address {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 16px;
+            color: var(--color-label);
+            margin-bottom: 22px;
+        }
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border: 0.6px solid var(--color-accent);
+            border-radius: 999px;
+            background: var(--color-bg);
+            color: var(--color-text-main);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .map-button:hover {
+            background: var(--color-blush-deep);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           PROGRAM TIMELINE
+           ============================================================ */
+        .program {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .program-row {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 24px;
+            align-items: start;
+            padding: 20px 0;
+            border-bottom: 0.5px dashed rgba(168, 104, 120, 0.3);
+        }
+        .program-row:last-child { border-bottom: 0; }
+        .program-time {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: 22px;
+            color: var(--color-text-main);
+            text-align: right;
+        }
+        .program-detail .title {
+            font-family: var(--font-script);
+            font-size: 26px;
+            color: var(--color-text-main);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .program-detail .desc {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 14px;
+            color: var(--color-label);
+            line-height: 1.4;
+        }
+
+        /* ============================================================
+           DRESS CODE
+           ============================================================ */
+        .dress {
+            max-width: 480px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .dress-title {
+            font-family: var(--font-script);
+            font-size: 40px;
+            color: var(--color-text-main);
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+        .dress-desc {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 17px;
+            line-height: 1.55;
+            color: var(--color-label);
+            margin-bottom: 28px;
+        }
+        .swatches {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+        .swatch {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
+        }
+        .swatch:hover { transform: scale(1.08); }
+        .swatch-label {
+            display: block;
+            margin-top: 10px;
+            font-family: var(--font-sans);
+            font-size: 9px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-label);
+            font-weight: 300;
+        }
+
+        /* ============================================================
+           GALLERY
+           ============================================================ */
+        .gallery {
+            max-width: 720px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        @media (min-width: 600px) {
+            .gallery { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        }
+        .gallery-item {
+            aspect-ratio: 3 / 4;
+            background: linear-gradient(135deg, var(--color-blush-deep), var(--color-bg));
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.04); }
+        .gallery-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(107, 32, 48, 0.35);
+        }
+        .gallery-placeholder svg { width: 36px; height: 36px; }
+
+        /* ============================================================
+           RSVP FORM
+           ============================================================ */
+        .rsvp {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .rsvp-form {
+            background: var(--color-cream);
+            border: 0.5px solid var(--color-frame);
+            border-radius: 8px;
+            padding: 32px 24px;
+        }
+        .field {
+            margin-bottom: 18px;
+        }
+        .field label {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-label);
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .field input[type="text"],
+        .field input[type="email"],
+        .field input[type="number"],
+        .field textarea {
+            width: 100%;
+            background: #fff;
+            border: 0.5px solid var(--color-frame);
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: var(--font-serif);
+            font-size: 16px;
+            color: var(--color-text-main);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .field input:focus, .field textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(168, 104, 120, 0.15);
+        }
+        .field textarea { resize: vertical; min-height: 80px; }
+
+        .radio-group { display: flex; gap: 10px; }
+        .radio-group label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 0.5px solid var(--color-frame);
+            border-radius: 4px;
+            padding: 12px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            color: var(--color-text-main);
+            transition: all 0.3s ease;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .radio-group input { display: none; }
+        .radio-group input:checked + span {
+            color: #fff;
+        }
+        .radio-group label:has(input:checked) {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: var(--color-text-main);
+            color: var(--color-cream);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 400;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+        .form-success {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+        .form-success.active { display: block; }
+        .form-success .check {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--color-blush-deep);
+            color: var(--color-text-main);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-success .check svg { width: 28px; height: 28px; }
+        .form-success p {
+            font-family: var(--font-script);
+            font-size: 30px;
+            color: var(--color-text-main);
+            line-height: 1.1;
+        }
+        .form-success .sub {
+            margin-top: 10px;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 15px;
+            color: var(--color-label);
+        }
+
+        /* ============================================================
+           FINAL MESSAGE
+           ============================================================ */
+        .final {
+            text-align: center;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .final-msg {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 22px;
+            line-height: 1.5;
+            color: var(--color-text-main);
+            margin-bottom: 30px;
+        }
+        .final-names {
+            font-family: var(--font-script);
+            font-size: 56px;
+            color: var(--color-text-main);
+            line-height: 1.1;
+        }
+        .final-date {
+            margin-top: 18px;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: 300;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        footer {
+            padding: 30px 24px 36px;
+            text-align: center;
+            background: var(--color-text-main);
+            color: var(--color-cream);
+        }
+        footer .heart {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            color: var(--color-blush-deep);
+            margin-bottom: 8px;
+        }
+        footer p {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 380px) {
+            .hero-names .script { font-size: 54px; }
+            .section-title { font-size: 42px; }
+            .name { font-size: 56px; }
+            .countdown-num { font-size: 32px; }
+            .countdown { gap: 6px; }
+            .countdown-cell { padding: 18px 4px 12px; }
+            section.block { padding: 64px 18px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+            .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         SVG DEFS GLOBALE (gradiente perlă, refolosite peste tot)
+         ============================================================ -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <radialGradient id="pearlBase" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stop-color="#FFFFFF"/>
+                <stop offset="50%"  stop-color="#FBE8EC"/>
+                <stop offset="100%" stop-color="#D89AA8"/>
+            </radialGradient>
+            <radialGradient id="pearlReflex" cx="32%" cy="28%" r="35%">
+                <stop offset="0%"  stop-color="rgba(255,255,255,0.95)"/>
+                <stop offset="60%" stop-color="rgba(255,255,255,0.15)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+        </defs>
+    </svg>
+
+    <!-- ============================================================
+         LOADING SCREEN
+         ============================================================ -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <svg class="loader-pearl" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="28" fill="url(#pearlBase)"/>
+            <circle cx="30" cy="30" r="28" fill="url(#pearlReflex)"/>
+        </svg>
+        <div class="loader-text">Daniela &amp; Cristian</div>
+    </div>
+
+    <!-- ============================================================
+         FALLING PETALS (animație decorativă globală)
+         ============================================================ -->
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" id="hero">
+        <video id="introVideo" autoplay muted playsinline preload="auto">
+            <source src="{{ url_for('videos', filename='intro.mp4') }}" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="top-label">Vă invităm la nunta noastră</div>
+
+        <button class="unmute" id="unmuteBtn" aria-label="Activează sunetul">&#128263;</button>
+
+        <div class="hero-names">
+            <div class="script bride">Daniela</div>
+            <span class="amp">&amp;</span>
+            <div class="script groom">Cristian</div>
+            <div class="date">23 &middot; 07 &middot; 2027</div>
+        </div>
+
+        <a class="scroll-hint" href="#welcome" aria-label="Vezi detaliile">
+            <span>Detalii</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
+    </section>
+
+    <!-- ============================================================
+         WELCOME / QUOTE — Cu binecuvântarea părinților
+         ============================================================ -->
+    <section class="block cream" id="welcome">
+        <div class="quote-block reveal">
+            <div class="pearl-cluster" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+            </div>
+            <p>„Iubirea este răbdătoare, iubirea este binevoitoare, nu invidiază, nu se laudă, nu se mândrește, nu se poartă necuviincios... iubirea nu cade niciodată."</p>
+            <div class="parents">
+                Cu binecuvântarea părinților
+                <span>Iurie &amp; Aliona &middot; Vasile &amp; Maria</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         COUNTDOWN
+         ============================================================ -->
+    <section class="block blush" id="countdown-section">
+        <div class="section-eyebrow reveal">Numărătoarea inversă</div>
+        <h2 class="section-title reveal">Mai sunt</h2>
+
+        <div class="countdown reveal-stagger" id="countdown" aria-live="polite">
+            <div class="countdown-cell"><span class="countdown-num" id="cd-days">000</span><span class="countdown-label">Zile</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Ore</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minute</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Secunde</span></div>
+        </div>
+
+        <div class="divider reveal" style="margin-top: 40px">
+            <span class="line"></span>
+            <svg class="pearl-mini" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+            <span class="line r"></span>
+        </div>
+
+        <p class="italic reveal" style="text-align:center; font-size: 16px; max-width: 400px; margin: 0 auto;">
+            până când vom spune <em>„Da, pentru totdeauna"</em>
+        </p>
+    </section>
+
+    <!-- ============================================================
+         SAVE THE DATE CARD
+         ============================================================ -->
+    <section class="block cream">
+        <div class="section-eyebrow reveal">Save the Date</div>
+        <h2 class="section-title reveal">Invitația noastră</h2>
+
+        <div class="card-wrap reveal">
+            <article class="card" role="document" aria-label="Invitație de nuntă">
+
+                <!-- Perle chenar SUS -->
+                <div class="pearls-top">
+                    <div class="group">
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                    </div>
+                    <div class="group">
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                    </div>
+                </div>
+
+                <!-- Perle chenar JOS -->
+                <div class="pearls-bottom">
+                    <div class="group">
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                    </div>
+                    <div class="group">
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                        <svg class="pearl" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                    </div>
+                </div>
+
+                <!-- Perle laterale -->
+                <svg class="pearls-left" viewBox="0 0 24 600" preserveAspectRatio="none">
+                    <g>
+                        <circle cx="12" cy="40"  r="5"   fill="url(#pearlBase)"/><circle cx="12" cy="40"  r="5"   fill="url(#pearlReflex)"/>
+                        <circle cx="14" cy="120" r="4"   fill="url(#pearlBase)"/><circle cx="14" cy="120" r="4"   fill="url(#pearlReflex)"/>
+                        <circle cx="10" cy="210" r="4.5" fill="url(#pearlBase)"/><circle cx="10" cy="210" r="4.5" fill="url(#pearlReflex)"/>
+                        <circle cx="13" cy="320" r="5"   fill="url(#pearlBase)"/><circle cx="13" cy="320" r="5"   fill="url(#pearlReflex)"/>
+                        <circle cx="11" cy="440" r="4"   fill="url(#pearlBase)"/><circle cx="11" cy="440" r="4"   fill="url(#pearlReflex)"/>
+                    </g>
+                </svg>
+                <svg class="pearls-right" viewBox="0 0 24 600" preserveAspectRatio="none">
+                    <g>
+                        <circle cx="11" cy="60"  r="4.5" fill="url(#pearlBase)"/><circle cx="11" cy="60"  r="4.5" fill="url(#pearlReflex)"/>
+                        <circle cx="13" cy="150" r="5"   fill="url(#pearlBase)"/><circle cx="13" cy="150" r="5"   fill="url(#pearlReflex)"/>
+                        <circle cx="10" cy="250" r="4"   fill="url(#pearlBase)"/><circle cx="10" cy="250" r="4"   fill="url(#pearlReflex)"/>
+                        <circle cx="14" cy="360" r="4.5" fill="url(#pearlBase)"/><circle cx="14" cy="360" r="4.5" fill="url(#pearlReflex)"/>
+                        <circle cx="12" cy="480" r="5"   fill="url(#pearlBase)"/><circle cx="12" cy="480" r="5"   fill="url(#pearlReflex)"/>
+                    </g>
+                </svg>
+
+                <div class="label label-main">Vă invităm la nunta noastră</div>
+
+                <div class="pearl-line" aria-hidden="true">
+                    <span class="dash"></span>
+                    <svg class="pearl-mini" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                    <span class="dash"></span>
+                </div>
+
+                <div class="names">
+                    <span class="name">Daniela</span>
+                    <span class="amp-card">&amp;</span>
+                    <span class="name">Cristian</span>
+                </div>
+
+                <div class="gradient-line" aria-hidden="true"></div>
+
+                <div class="label label-date">23 Iulie 2027</div>
+                <div style="height: 8px"></div>
+                <div class="italic">vă așteptăm cu drag</div>
+                <div class="italic" style="margin-top: 4px;">Villa Garden &middot; Chișinău</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         OUR STORY — Timeline
+         ============================================================ -->
+    <section class="block blush">
+        <div class="section-eyebrow reveal">Povestea noastră</div>
+        <h2 class="section-title reveal">Cum am ajuns aici</h2>
+
+        <div class="story reveal-stagger">
+            <div class="story-item">
+                <div class="story-pearl" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
+                </div>
+                <div class="story-date">Septembrie 2019</div>
+                <div class="story-title">Prima privire</div>
+                <div class="story-text">Ne-am întâlnit la o petrecere a prietenilor comuni, într-o seară de toamnă. O privire a fost de ajuns.</div>
+            </div>
+
+            <div class="story-item">
+                <div class="story-pearl" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
+                </div>
+                <div class="story-date">Februarie 2021</div>
+                <div class="story-title">Primul „te iubesc"</div>
+                <div class="story-text">După doi ani de râsete, drumuri și nopți lungi, am rostit pentru prima dată cuvintele care aveau să schimbe totul.</div>
+            </div>
+
+            <div class="story-item">
+                <div class="story-pearl" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
+                </div>
+                <div class="story-date">August 2023</div>
+                <div class="story-title">Acasă, împreună</div>
+                <div class="story-text">Am cumpărat prima noastră casă și am început să visăm la viitorul pe care vrem să-l construim împreună.</div>
+            </div>
+
+            <div class="story-item">
+                <div class="story-pearl" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
+                </div>
+                <div class="story-date">Decembrie 2025</div>
+                <div class="story-title">„Vrei să fii soția mea?"</div>
+                <div class="story-text">Sub luminile orașului, în prima zi de iarnă, am spus „Da". Și de atunci, totul are sens.</div>
+            </div>
+
+            <div class="story-item">
+                <div class="story-pearl" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
+                </div>
+                <div class="story-date">23 Iulie 2027</div>
+                <div class="story-title">Pentru totdeauna</div>
+                <div class="story-text">Și acum, vrem să avem alături oamenii dragi nouă, ca să sărbătorim împreună începutul unei vieți noi.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         EVENT DETAILS
+         ============================================================ -->
+    <section class="block cream">
+        <div class="section-eyebrow reveal">Detaliile zilei</div>
+        <h2 class="section-title reveal">Programul nunții</h2>
+
+        <div class="events reveal-stagger">
+            <div class="event-card">
+                <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M24 4 L24 14"/>
+                    <path d="M20 8 L28 8"/>
+                    <path d="M14 44 L14 22 L24 14 L34 22 L34 44 Z"/>
+                    <path d="M20 44 L20 32 L28 32 L28 44"/>
+                    <circle cx="24" cy="26" r="1.5" fill="currentColor"/>
+                </svg>
+                <div class="event-type">Cununia religioasă</div>
+                <div class="event-name">la biserică</div>
+                <div class="event-meta">
+                    <strong>Ora 14:00</strong>
+                    <span class="small">Biserica „Sfinții Împărați Constantin și Elena"</span>
+                    <span class="small">Strada Mitropolit Varlaam 84, Chișinău</span>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 6 L34 6 L32 22 C32 28 28 32 24 32 C20 32 16 28 16 22 Z"/>
+                    <path d="M24 32 L24 42"/>
+                    <path d="M18 42 L30 42"/>
+                    <path d="M18 12 L30 12"/>
+                </svg>
+                <div class="event-type">Petrecerea</div>
+                <div class="event-name">restaurantul</div>
+                <div class="event-meta">
+                    <strong>Ora 17:00</strong>
+                    <span class="small">Villa Garden Restaurant</span>
+                    <span class="small">Bulevardul Decebal 16, Chișinău</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         LOCATION + MAP
+         ============================================================ -->
+    <section class="block blush">
+        <div class="section-eyebrow reveal">Locația</div>
+        <h2 class="section-title reveal">Vă așteptăm aici</h2>
+
+        <div class="location-wrap reveal">
+            <div class="map-frame">
+                <iframe
+                    src="https://maps.google.com/maps?q=Bulevardul+Decebal+16+Chi%C8%99in%C4%83u&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Locația nunții — Villa Garden">
+                </iframe>
+            </div>
+            <div class="location-info">
+                <div class="location-name">Villa Garden</div>
+                <div class="location-address">Bulevardul Decebal 16 &middot; Chișinău</div>
+                <a class="map-button"
+                   href="https://www.google.com/maps/search/?api=1&query=Villa+Garden+Bulevardul+Decebal+16+Chi%C8%99in%C4%83u"
+                   target="_blank" rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Deschide în Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PROGRAM TIMELINE
+         ============================================================ -->
+    <section class="block cream">
+        <div class="section-eyebrow reveal">Cronologia zilei</div>
+        <h2 class="section-title reveal">Ce vă așteaptă</h2>
+
+        <div class="program reveal-stagger">
+            <div class="program-row">
+                <div class="program-time">14:00</div>
+                <div class="program-detail">
+                    <div class="title">Cununia religioasă</div>
+                    <div class="desc">Momentul în care vom rosti jurămintele în fața Domnului</div>
+                </div>
+            </div>
+            <div class="program-row">
+                <div class="program-time">16:00</div>
+                <div class="program-detail">
+                    <div class="title">Sesiune foto</div>
+                    <div class="desc">Câteva cadre pentru amintire, cu noi și cei mai dragi</div>
+                </div>
+            </div>
+            <div class="program-row">
+                <div class="program-time">17:00</div>
+                <div class="program-detail">
+                    <div class="title">Cocktail de bun venit</div>
+                    <div class="desc">Vă întâmpinăm la Villa Garden cu șampanie și aperitive</div>
+                </div>
+            </div>
+            <div class="program-row">
+                <div class="program-time">19:00</div>
+                <div class="program-detail">
+                    <div class="title">Cina festivă</div>
+                    <div class="desc">Un meniu pregătit cu grijă pentru o seară perfectă</div>
+                </div>
+            </div>
+            <div class="program-row">
+                <div class="program-time">21:30</div>
+                <div class="program-detail">
+                    <div class="title">Primul dans</div>
+                    <div class="desc">Apoi vă invităm pe ringul de dans alături de noi</div>
+                </div>
+            </div>
+            <div class="program-row">
+                <div class="program-time">23:30</div>
+                <div class="program-detail">
+                    <div class="title">Tortul miresei</div>
+                    <div class="desc">Un moment dulce înainte de petrecerea care continuă până în zori</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         DRESS CODE
+         ============================================================ -->
+    <section class="block blush">
+        <div class="section-eyebrow reveal">Dress code</div>
+        <h2 class="section-title reveal">Ținută</h2>
+
+        <div class="dress reveal">
+            <div class="dress-title">Elegant romantic</div>
+            <p class="dress-desc">
+                Vă rugăm să vă bucurați alături de noi într-o ținută elegantă.
+                Sugestie: nuanțe pastel sau pământii, cu accente metalice.
+                Domnii — costum închis la culoare. Doamnele — rochie de seară.
+            </p>
+            <div class="swatches" role="list" aria-label="Sugestii de culori">
+                <div>
+                    <div class="swatch" style="background: #FBE0E5" title="Blush" role="listitem"></div>
+                    <span class="swatch-label">Blush</span>
+                </div>
+                <div>
+                    <div class="swatch" style="background: #C68B95" title="Rose Dusty" role="listitem"></div>
+                    <span class="swatch-label">Rose</span>
+                </div>
+                <div>
+                    <div class="swatch" style="background: #6B2030" title="Burgundy" role="listitem"></div>
+                    <span class="swatch-label">Wine</span>
+                </div>
+                <div>
+                    <div class="swatch" style="background: #D4AF6A" title="Champagne Gold" role="listitem"></div>
+                    <span class="swatch-label">Gold</span>
+                </div>
+                <div>
+                    <div class="swatch" style="background: #FAF4ED" title="Ivory" role="listitem"></div>
+                    <span class="swatch-label">Ivory</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         GALLERY
+         ============================================================ -->
+    <section class="block cream">
+        <div class="section-eyebrow reveal">Galerie</div>
+        <h2 class="section-title reveal">Momentele noastre</h2>
+
+        <div class="gallery reveal-stagger">
+            <!-- ✏️ ÎNLOCUIEȘTE src cu pozele tale -->
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         RSVP FORM
+         ============================================================ -->
+    <section class="block blush" id="rsvp">
+        <div class="section-eyebrow reveal">Confirmă prezența</div>
+        <h2 class="section-title reveal">Spune-ne dacă vii</h2>
+
+        <div class="rsvp reveal">
+            <form class="rsvp-form" id="rsvpForm" onsubmit="handleRsvp(event)">
+                <div class="field">
+                    <label for="rsvp-name">Numele tău</label>
+                    <input type="text" id="rsvp-name" name="name" required placeholder="Ion Popescu" />
+                </div>
+
+                <div class="field">
+                    <label>Vei fi alături de noi?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="attending" value="da" required /><span>Cu drag, da</span></label>
+                        <label><input type="radio" name="attending" value="nu" /><span>Din păcate, nu</span></label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="rsvp-guests">Câți veți fi (împreună cu tine)</label>
+                    <input type="number" id="rsvp-guests" name="guests" min="1" max="6" value="1" />
+                </div>
+
+                <div class="field">
+                    <label for="rsvp-diet">Preferințe culinare (opțional)</label>
+                    <input type="text" id="rsvp-diet" name="diet" placeholder="Ex: vegetarian, fără gluten" />
+                </div>
+
+                <div class="field">
+                    <label for="rsvp-msg">Un mesaj pentru noi (opțional)</label>
+                    <textarea id="rsvp-msg" name="message" placeholder="Câteva cuvinte..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Trimite confirmarea</button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+                <div class="check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <p>Mulțumim!</p>
+                <p class="sub">Abia așteptăm să te avem alături de noi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL MESSAGE
+         ============================================================ -->
+    <section class="block cream">
+        <div class="final reveal">
+            <div class="pearl-cluster" aria-hidden="true" style="display:flex; justify-content:center; gap:8px; margin-bottom: 28px;">
+                <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                <svg width="14" height="14" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
+            </div>
+            <p class="final-msg">
+                „Pentru că dragostea adevărată<br/>nu se vede cu ochii,<br/>ci se simte cu inima."
+            </p>
+            <div class="final-names">Daniela &amp; Cristian</div>
+            <div class="final-date">23 &middot; 07 &middot; 2027</div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer>
+        <div class="heart">&hearts;</div>
+        <p>Cu drag, Daniela &amp; Cristian</p>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+    <script>
+        (function () {
+            // ---------- Loader ----------
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    var loader = document.getElementById('loader');
+                    if (loader) loader.classList.add('hidden');
+                }, 1400);
+            });
+
+            // ---------- Falling petals ----------
+            (function createPetals () {
+                var container = document.getElementById('petals');
+                if (!container) return;
+                var count = 14;
+                for (var i = 0; i < count; i++) {
+                    var p = document.createElement('div');
+                    p.className = 'petal';
+                    p.style.left = (Math.random() * 100) + 'vw';
+                    p.style.animationDuration = (10 + Math.random() * 12) + 's';
+                    p.style.animationDelay = (Math.random() * 18) + 's';
+                    p.style.transform = 'scale(' + (0.6 + Math.random() * 0.8) + ')';
+                    p.style.opacity = (0.35 + Math.random() * 0.45);
+                    container.appendChild(p);
+                }
+            })();
+
+            // ---------- Hero video (unmute toggle + scroll on end) ----------
+            var video = document.getElementById('introVideo');
+            var unmuteBtn = document.getElementById('unmuteBtn');
+            var welcome = document.getElementById('welcome');
+
+            function setIcon () {
+                if (!video || !unmuteBtn) return;
+                unmuteBtn.innerHTML = video.muted ? '&#128263;' : '&#128266;';
+            }
+            setIcon();
+            if (unmuteBtn && video) {
+                unmuteBtn.addEventListener('click', function () {
+                    video.muted = !video.muted;
+                    if (!video.muted) { video.play().catch(function () {}); }
+                    setIcon();
+                });
+            }
+            if (video && welcome) {
+                video.addEventListener('ended', function () {
+                    welcome.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+
+            // ---------- Countdown ----------
+            // ✏️ EDITEAZĂ data nunții aici (an, lună-1, zi, ore, minute)
+            var weddingDate = new Date(2027, 6, 23, 14, 0, 0).getTime(); // 23 iulie 2027, 14:00
+
+            function pad(n, l) {
+                l = l || 2;
+                var s = String(n);
+                while (s.length < l) s = '0' + s;
+                return s;
+            }
+            function updateCountdown () {
+                var now = new Date().getTime();
+                var diff = weddingDate - now;
+                if (diff < 0) diff = 0;
+                var days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                var mins  = Math.floor((diff / (1000 * 60)) % 60);
+                var secs  = Math.floor((diff / 1000) % 60);
+                var d = document.getElementById('cd-days');
+                var h = document.getElementById('cd-hours');
+                var m = document.getElementById('cd-mins');
+                var s = document.getElementById('cd-secs');
+                if (d) d.textContent = pad(days, 3);
+                if (h) h.textContent = pad(hours);
+                if (m) m.textContent = pad(mins);
+                if (s) s.textContent = pad(secs);
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // ---------- Scroll reveal (IntersectionObserver) ----------
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) {
+                    io.observe(el);
+                });
+            } else {
+                document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) {
+                    el.classList.add('in-view');
+                });
+            }
+        })();
+
+        // ---------- RSVP form ----------
+        function handleRsvp (e) {
+            e.preventDefault();
+            var form = document.getElementById('rsvpForm');
+            var success = document.getElementById('formSuccess');
+
+            // ✏️ EDITEAZĂ AICI: trimite datele către backend / Google Form / email
+            // Exemplu (pseudocod):
+            // fetch('/api/rsvp', { method: 'POST', body: new FormData(form) });
+
+            // Pentru moment: doar afișează mulțumirea
+            form.style.display = 'none';
+            success.classList.add('active');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Default values for the chart.
+# Toate valorile concrete vin din `deploy/values.yaml` la momentul `helm upgrade --install`.
+# Aici lăsăm doar default-uri minime și generice — fără referințe edutrack/.NET.
+
+nameOverride:
+fullnameOverride:
+
+timeZone: Europe/Chisinau
+dotnetEnvironment:
+
+imagePullSecrets: []
+
+integrations: {}
+configMap: {}
+
+serviceAccount:
+  create: true
+
+deployment: {}
+statefulSet: {}
+ingress: {}
+job: {}

@@ -1,0 +1,91 @@
+# Wedding invitation — Helm values
+# Folosit cu: helm upgrade --install wedding ./deploy/chart -n wedding -f ./deploy/values.yaml
+
+nameOverride: wedding-invitation
+fullnameOverride: wedding-invitation
+
+# Implicit pachetul ghcr.io trebuie să fie PUBLIC.
+# Dacă vrei să-l ții privat: creează manual secretul `ghcr-pull` în namespace `wedding`
+# și decomentează linia de mai jos.
+# imagePullSecrets:
+#   - name: ghcr-pull
+imagePullSecrets: []
+
+serviceAccount:
+  create: true
+
+deployment:
+  web:
+    labels:
+      app.kubernetes.io/component: web
+    replicas: 2
+    autoscaling:
+      enabled: false
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+    image:
+      repository: ghcr.io/barondevtest/wedding-invitation
+      tag: latest
+      pullPolicy: Always
+    # Nu suntem .NET — dezactivăm toate preset-urile aspnet
+    envPreset: none
+    portsPreset: none
+    probesPreset: none
+    env:
+      - name: PORT
+        value: "8080"
+    ports:
+      - name: http
+        containerPort: 8080
+        protocol: TCP
+    readinessProbe:
+      httpGet:
+        path: /healthz
+        port: http
+      initialDelaySeconds: 3
+      periodSeconds: 10
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: http
+      initialDelaySeconds: 10
+      periodSeconds: 20
+    resources:
+      requests:
+        cpu: 50m
+        memory: 96Mi
+      limits:
+        cpu: 300m
+        memory: 256Mi
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop: ["ALL"]
+    volumeMounts:
+      - name: tmp
+        mountPath: /tmp
+    volumes:
+      - name: tmp
+        emptyDir: {}
+    service:
+      type: ClusterIP
+      portName: http
+      ports:
+        - name: http
+          port: 80
+          targetPort: http
+          protocol: TCP
+
+ingress:
+  web:
+    enabled: true
+    className: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "20m"
+    host: cristian-and-daniela-weeding.eu
+    tls:
+      enabled: false
