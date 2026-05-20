@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Daniela &amp; Cristian &mdash; 23 Iulie 2027</title>
-    <meta name="description" content="Vă invităm la nunta noastră — Daniela &amp; Cristian, 23 Iulie 2027, Chișinău" />
+    <title data-i18n="page.title">Daniela &amp; Cristian &mdash; 23 Iulie 2027</title>
+    <meta name="description" data-i18n-content="page.description" content="Vă invităm la nunta noastră — Daniela &amp; Cristian, 23 Iulie 2027, Chișinău" />
     <meta name="theme-color" content="#FBE0E5" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -283,6 +283,56 @@
             .unmute:hover { background: rgba(0,0,0,0.65); }
         }
         .unmute:active { background: rgba(0,0,0,0.65); }
+
+        /* ============================================================
+           LANGUAGE SWITCHER — fix top-left, persistent peste tot
+           ============================================================ */
+        .lang-switch {
+            position: fixed;
+            top: calc(18px + env(safe-area-inset-top));
+            left: 18px;
+            z-index: 100;
+            display: flex;
+            background: rgba(40, 20, 28, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 999px;
+            padding: 3px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            transition: opacity 0.4s ease;
+        }
+        .lang-switch button {
+            background: transparent;
+            border: 0;
+            color: rgba(255,255,255,0.85);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            padding: 6px 11px;
+            min-width: 34px;
+            min-height: 30px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .lang-switch button[aria-pressed="true"] {
+            background: rgba(255,255,255,0.22);
+            color: #fff;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .lang-switch button:hover { background: rgba(255,255,255,0.12); }
+        }
+        .lang-switch button:focus-visible {
+            outline: 2px solid rgba(255,255,255,0.6);
+            outline-offset: 2px;
+        }
+        @media (max-width: 480px) {
+            .lang-switch { top: 14px; left: 14px; padding: 2px; }
+            .lang-switch button { font-size: 10px; padding: 5px 9px; min-width: 30px; min-height: 28px; }
+        }
 
         /* ============================================================
            SECTION COMMON
@@ -829,137 +879,6 @@
         .gallery-placeholder svg { width: 36px; height: 36px; }
 
         /* ============================================================
-           RSVP FORM
-           ============================================================ */
-        .rsvp {
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .rsvp-form {
-            background: var(--color-cream);
-            border: 0.5px solid var(--color-frame);
-            border-radius: 8px;
-            padding: clamp(24px, 5vw, 36px) clamp(18px, 4vw, 28px);
-        }
-        .field {
-            margin-bottom: 18px;
-        }
-        .field label {
-            display: block;
-            font-family: var(--font-sans);
-            font-size: 10px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-label);
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
-        .field input[type="text"],
-        .field input[type="email"],
-        .field input[type="number"],
-        .field textarea {
-            width: 100%;
-            background: #fff;
-            border: 0.5px solid var(--color-frame);
-            border-radius: 4px;
-            padding: 12px 14px;
-            font-family: var(--font-serif);
-            font-size: 16px;
-            color: var(--color-text-main);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .field input:focus, .field textarea:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(168, 104, 120, 0.15);
-        }
-        .field textarea { resize: vertical; min-height: 80px; }
-
-        .radio-group { display: flex; gap: 10px; }
-        .radio-group label {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            border: 0.5px solid var(--color-frame);
-            border-radius: 4px;
-            padding: 12px;
-            cursor: pointer;
-            font-family: var(--font-sans);
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            font-weight: 300;
-            color: var(--color-text-main);
-            transition: all 0.3s ease;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        .radio-group input { display: none; }
-        .radio-group input:checked + span {
-            color: #fff;
-        }
-        .radio-group label:has(input:checked) {
-            background: var(--color-accent);
-            border-color: var(--color-accent);
-        }
-
-        .submit-btn {
-            width: 100%;
-            min-height: 48px;
-            padding: 14px;
-            border: none;
-            background: var(--color-text-main);
-            color: var(--color-cream);
-            font-family: var(--font-sans);
-            font-size: clamp(10px, 1.5vw, 12px);
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            font-weight: 400;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-        @media (hover: hover) and (pointer: fine) {
-            .submit-btn:hover {
-                background: var(--color-accent);
-                transform: translateY(-2px);
-            }
-        }
-        .submit-btn:active { background: var(--color-accent); }
-        .form-success {
-            text-align: center;
-            padding: 40px 20px;
-            display: none;
-        }
-        .form-success.active { display: block; }
-        .form-success .check {
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            background: var(--color-blush-deep);
-            color: var(--color-text-main);
-            margin: 0 auto 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .form-success .check svg { width: 28px; height: 28px; }
-        .form-success p {
-            font-family: var(--font-script);
-            font-size: 30px;
-            color: var(--color-text-main);
-            line-height: 1.1;
-        }
-        .form-success .sub {
-            margin-top: 10px;
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: 15px;
-            color: var(--color-label);
-        }
-
-        /* ============================================================
            FINAL MESSAGE
            ============================================================ */
         .final {
@@ -1116,24 +1035,30 @@
          HERO
          ============================================================ -->
     <section class="hero" id="hero">
-        <video id="introVideo" autoplay muted playsinline preload="auto">
+        <video id="introVideo" autoplay playsinline preload="auto">
             <source src="/static/videos/intro.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
 
-        <div class="top-label">Vă invităm la nunta noastră</div>
+        <div class="top-label" data-i18n="hero.topLabel">Vă invităm la nunta noastră</div>
 
-        <button class="unmute" id="unmuteBtn" aria-label="Activează sunetul">&#128263;</button>
+        <button class="unmute" id="unmuteBtn" data-i18n-aria-label="hero.unmuteAria" aria-label="Activează sunetul">&#128263;</button>
+
+        <div class="lang-switch" role="group" data-i18n-aria-label="lang.switchAria" aria-label="Schimbă limba">
+            <button type="button" data-lang="ro" aria-pressed="true">RO</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
 
         <div class="hero-names">
             <div class="script bride">Daniela</div>
             <span class="amp">&amp;</span>
             <div class="script groom">Cristian</div>
-            <div class="date">23 &middot; 07 &middot; 2027</div>
+            <div class="date" data-i18n="hero.date">23 &middot; 07 &middot; 2027</div>
         </div>
 
-        <a class="scroll-hint" href="#welcome" aria-label="Vezi detaliile">
-            <span>Detalii</span>
+        <a class="scroll-hint" href="#welcome" data-i18n-aria-label="hero.scrollHintAria" aria-label="Vezi detaliile">
+            <span data-i18n="hero.scrollHint">Detalii</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -1150,10 +1075,10 @@
                 <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
                 <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
             </div>
-            <p>„Iubirea este răbdătoare, iubirea este binevoitoare, nu invidiază, nu se laudă, nu se mândrește, nu se poartă necuviincios... iubirea nu cade niciodată."</p>
+            <p data-i18n="quote.text">„Iubirea este răbdătoare, iubirea este binevoitoare, nu invidiază, nu se laudă, nu se mândrește, nu se poartă necuviincios... iubirea nu cade niciodată."</p>
             <div class="parents">
-                Cu binecuvântarea părinților
-                <span>Iurie &amp; Aliona &middot; Vasile &amp; Maria</span>
+                <span data-i18n="quote.blessing">Cu binecuvântarea părinților</span>
+                <span data-i18n="quote.parents">Iurie &amp; Aliona &middot; Vasile &amp; Maria</span>
             </div>
         </div>
     </section>
@@ -1162,14 +1087,14 @@
          COUNTDOWN
          ============================================================ -->
     <section class="block blush" id="countdown-section">
-        <div class="section-eyebrow reveal">Numărătoarea inversă</div>
-        <h2 class="section-title reveal">Mai sunt</h2>
+        <div class="section-eyebrow reveal" data-i18n="countdown.eyebrow">Numărătoarea inversă</div>
+        <h2 class="section-title reveal" data-i18n="countdown.title">Mai sunt</h2>
 
         <div class="countdown reveal-stagger" id="countdown" aria-live="polite">
-            <div class="countdown-cell"><span class="countdown-num" id="cd-days">000</span><span class="countdown-label">Zile</span></div>
-            <div class="countdown-cell"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Ore</span></div>
-            <div class="countdown-cell"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minute</span></div>
-            <div class="countdown-cell"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Secunde</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-days">000</span><span class="countdown-label" data-i18n="countdown.days">Zile</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label" data-i18n="countdown.hours">Ore</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label" data-i18n="countdown.mins">Minute</span></div>
+            <div class="countdown-cell"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label" data-i18n="countdown.secs">Secunde</span></div>
         </div>
 
         <div class="divider reveal" style="margin-top: 40px">
@@ -1178,7 +1103,7 @@
             <span class="line r"></span>
         </div>
 
-        <p class="italic reveal" style="text-align:center; font-size: 16px; max-width: 400px; margin: 0 auto;">
+        <p class="italic reveal" data-i18n-html="countdown.tagline" style="text-align:center; font-size: 16px; max-width: 400px; margin: 0 auto;">
             până când vom spune <em>„Da, pentru totdeauna"</em>
         </p>
     </section>
@@ -1187,11 +1112,11 @@
          SAVE THE DATE CARD
          ============================================================ -->
     <section class="block cream">
-        <div class="section-eyebrow reveal">Save the Date</div>
-        <h2 class="section-title reveal">Invitația noastră</h2>
+        <div class="section-eyebrow reveal" data-i18n="saveDate.eyebrow">Save the Date</div>
+        <h2 class="section-title reveal" data-i18n="saveDate.title">Invitația noastră</h2>
 
         <div class="card-wrap reveal">
-            <article class="card" role="document" aria-label="Invitație de nuntă">
+            <article class="card" role="document" data-i18n-aria-label="saveDate.cardAria" aria-label="Invitație de nuntă">
 
                 <!-- Perle chenar SUS -->
                 <div class="pearls-top">
@@ -1249,7 +1174,7 @@
                     </g>
                 </svg>
 
-                <div class="label label-main">Vă invităm la nunta noastră</div>
+                <div class="label label-main" data-i18n="saveDate.label">Vă invităm la nunta noastră</div>
 
                 <div class="pearl-line" aria-hidden="true">
                     <span class="dash"></span>
@@ -1265,10 +1190,10 @@
 
                 <div class="gradient-line" aria-hidden="true"></div>
 
-                <div class="label label-date">23 Iulie 2027</div>
+                <div class="label label-date" data-i18n="saveDate.date">23 Iulie 2027</div>
                 <div style="height: 8px"></div>
-                <div class="italic">vă așteptăm cu drag</div>
-                <div class="italic" style="margin-top: 4px;">Villa Garden &middot; Chișinău</div>
+                <div class="italic" data-i18n="saveDate.welcome">vă așteptăm cu drag</div>
+                <div class="italic" data-i18n="saveDate.venue" style="margin-top: 4px;">Villa Garden &middot; Chișinău</div>
             </article>
         </div>
     </section>
@@ -1277,53 +1202,53 @@
          OUR STORY — Timeline
          ============================================================ -->
     <section class="block blush">
-        <div class="section-eyebrow reveal">Povestea noastră</div>
-        <h2 class="section-title reveal">Cum am ajuns aici</h2>
+        <div class="section-eyebrow reveal" data-i18n="story.eyebrow">Povestea noastră</div>
+        <h2 class="section-title reveal" data-i18n="story.title">Cum am ajuns aici</h2>
 
         <div class="story reveal-stagger">
             <div class="story-item">
                 <div class="story-pearl" aria-hidden="true">
                     <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
                 </div>
-                <div class="story-date">Septembrie 2019</div>
-                <div class="story-title">Prima privire</div>
-                <div class="story-text">Ne-am întâlnit la o petrecere a prietenilor comuni, într-o seară de toamnă. O privire a fost de ajuns.</div>
+                <div class="story-date" data-i18n="story.item1.date">Septembrie 2019</div>
+                <div class="story-title" data-i18n="story.item1.title">Prima privire</div>
+                <div class="story-text" data-i18n="story.item1.text">Ne-am întâlnit la o petrecere a prietenilor comuni, într-o seară de toamnă. O privire a fost de ajuns.</div>
             </div>
 
             <div class="story-item">
                 <div class="story-pearl" aria-hidden="true">
                     <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
                 </div>
-                <div class="story-date">Februarie 2021</div>
-                <div class="story-title">Primul „te iubesc"</div>
-                <div class="story-text">După doi ani de râsete, drumuri și nopți lungi, am rostit pentru prima dată cuvintele care aveau să schimbe totul.</div>
+                <div class="story-date" data-i18n="story.item2.date">Februarie 2021</div>
+                <div class="story-title" data-i18n="story.item2.title">Primul „te iubesc"</div>
+                <div class="story-text" data-i18n="story.item2.text">După doi ani de râsete, drumuri și nopți lungi, am rostit pentru prima dată cuvintele care aveau să schimbe totul.</div>
             </div>
 
             <div class="story-item">
                 <div class="story-pearl" aria-hidden="true">
                     <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
                 </div>
-                <div class="story-date">August 2023</div>
-                <div class="story-title">Acasă, împreună</div>
-                <div class="story-text">Am cumpărat prima noastră casă și am început să visăm la viitorul pe care vrem să-l construim împreună.</div>
+                <div class="story-date" data-i18n="story.item3.date">August 2023</div>
+                <div class="story-title" data-i18n="story.item3.title">Acasă, împreună</div>
+                <div class="story-text" data-i18n="story.item3.text">Am cumpărat prima noastră casă și am început să visăm la viitorul pe care vrem să-l construim împreună.</div>
             </div>
 
             <div class="story-item">
                 <div class="story-pearl" aria-hidden="true">
                     <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
                 </div>
-                <div class="story-date">Decembrie 2025</div>
-                <div class="story-title">„Vrei să fii soția mea?"</div>
-                <div class="story-text">Sub luminile orașului, în prima zi de iarnă, am spus „Da". Și de atunci, totul are sens.</div>
+                <div class="story-date" data-i18n="story.item4.date">Decembrie 2025</div>
+                <div class="story-title" data-i18n="story.item4.title">„Vrei să fii soția mea?"</div>
+                <div class="story-text" data-i18n="story.item4.text">Sub luminile orașului, în prima zi de iarnă, am spus „Da". Și de atunci, totul are sens.</div>
             </div>
 
             <div class="story-item">
                 <div class="story-pearl" aria-hidden="true">
                     <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="url(#pearlBase)"/><circle cx="8" cy="8" r="8" fill="url(#pearlReflex)"/></svg>
                 </div>
-                <div class="story-date">23 Iulie 2027</div>
-                <div class="story-title">Pentru totdeauna</div>
-                <div class="story-text">Și acum, vrem să avem alături oamenii dragi nouă, ca să sărbătorim împreună începutul unei vieți noi.</div>
+                <div class="story-date" data-i18n="story.item5.date">23 Iulie 2027</div>
+                <div class="story-title" data-i18n="story.item5.title">Pentru totdeauna</div>
+                <div class="story-text" data-i18n="story.item5.text">Și acum, vrem să avem alături oamenii dragi nouă, ca să sărbătorim împreună începutul unei vieți noi.</div>
             </div>
         </div>
     </section>
@@ -1332,8 +1257,8 @@
          EVENT DETAILS
          ============================================================ -->
     <section class="block cream">
-        <div class="section-eyebrow reveal">Detaliile zilei</div>
-        <h2 class="section-title reveal">Programul nunții</h2>
+        <div class="section-eyebrow reveal" data-i18n="events.eyebrow">Detaliile zilei</div>
+        <h2 class="section-title reveal" data-i18n="events.title">Programul nunții</h2>
 
         <div class="events reveal-stagger">
             <div class="event-card">
@@ -1344,12 +1269,12 @@
                     <path d="M20 44 L20 32 L28 32 L28 44"/>
                     <circle cx="24" cy="26" r="1.5" fill="currentColor"/>
                 </svg>
-                <div class="event-type">Cununia religioasă</div>
-                <div class="event-name">la biserică</div>
+                <div class="event-type" data-i18n="events.church.type">Cununia religioasă</div>
+                <div class="event-name" data-i18n="events.church.name">la biserică</div>
                 <div class="event-meta">
-                    <strong>Ora 14:00</strong>
-                    <span class="small">Biserica „Sfinții Împărați Constantin și Elena"</span>
-                    <span class="small">Strada Mitropolit Varlaam 84, Chișinău</span>
+                    <strong data-i18n="events.church.time">Ora 14:00</strong>
+                    <span class="small" data-i18n="events.church.venue">Biserica „Sfinții Împărați Constantin și Elena"</span>
+                    <span class="small" data-i18n="events.church.address">Strada Mitropolit Varlaam 84, Chișinău</span>
                 </div>
             </div>
 
@@ -1360,12 +1285,12 @@
                     <path d="M18 42 L30 42"/>
                     <path d="M18 12 L30 12"/>
                 </svg>
-                <div class="event-type">Petrecerea</div>
-                <div class="event-name">restaurantul</div>
+                <div class="event-type" data-i18n="events.party.type">Petrecerea</div>
+                <div class="event-name" data-i18n="events.party.name">restaurantul</div>
                 <div class="event-meta">
-                    <strong>Ora 17:00</strong>
-                    <span class="small">Villa Garden Restaurant</span>
-                    <span class="small">Bulevardul Decebal 16, Chișinău</span>
+                    <strong data-i18n="events.party.time">Ora 17:00</strong>
+                    <span class="small" data-i18n="events.party.venue">Villa Garden Restaurant</span>
+                    <span class="small" data-i18n="events.party.address">Bulevardul Decebal 16, Chișinău</span>
                 </div>
             </div>
         </div>
@@ -1375,8 +1300,8 @@
          LOCATION + MAP
          ============================================================ -->
     <section class="block blush">
-        <div class="section-eyebrow reveal">Locația</div>
-        <h2 class="section-title reveal">Vă așteptăm aici</h2>
+        <div class="section-eyebrow reveal" data-i18n="location.eyebrow">Locația</div>
+        <h2 class="section-title reveal" data-i18n="location.title">Vă așteptăm aici</h2>
 
         <div class="location-wrap reveal">
             <div class="map-frame">
@@ -1384,12 +1309,13 @@
                     src="https://maps.google.com/maps?q=Bulevardul+Decebal+16+Chi%C8%99in%C4%83u&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
+                    data-i18n-title="location.iframeTitle"
                     title="Locația nunții — Villa Garden">
                 </iframe>
             </div>
             <div class="location-info">
-                <div class="location-name">Villa Garden</div>
-                <div class="location-address">Bulevardul Decebal 16 &middot; Chișinău</div>
+                <div class="location-name" data-i18n="location.name">Villa Garden</div>
+                <div class="location-address" data-i18n="location.address">Bulevardul Decebal 16 &middot; Chișinău</div>
                 <a class="map-button"
                    href="https://www.google.com/maps/search/?api=1&query=Villa+Garden+Bulevardul+Decebal+16+Chi%C8%99in%C4%83u"
                    target="_blank" rel="noopener">
@@ -1397,7 +1323,7 @@
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                         <circle cx="12" cy="10" r="3"/>
                     </svg>
-                    Deschide în Google Maps
+                    <span data-i18n="location.button">Deschide în Google Maps</span>
                 </a>
             </div>
         </div>
@@ -1407,50 +1333,50 @@
          PROGRAM TIMELINE
          ============================================================ -->
     <section class="block cream">
-        <div class="section-eyebrow reveal">Cronologia zilei</div>
-        <h2 class="section-title reveal">Ce vă așteaptă</h2>
+        <div class="section-eyebrow reveal" data-i18n="program.eyebrow">Cronologia zilei</div>
+        <h2 class="section-title reveal" data-i18n="program.title">Ce vă așteaptă</h2>
 
         <div class="program reveal-stagger">
             <div class="program-row">
                 <div class="program-time">14:00</div>
                 <div class="program-detail">
-                    <div class="title">Cununia religioasă</div>
-                    <div class="desc">Momentul în care vom rosti jurămintele în fața Domnului</div>
+                    <div class="title" data-i18n="program.item1.title">Cununia religioasă</div>
+                    <div class="desc" data-i18n="program.item1.desc">Momentul în care vom rosti jurămintele în fața Domnului</div>
                 </div>
             </div>
             <div class="program-row">
                 <div class="program-time">16:00</div>
                 <div class="program-detail">
-                    <div class="title">Sesiune foto</div>
-                    <div class="desc">Câteva cadre pentru amintire, cu noi și cei mai dragi</div>
+                    <div class="title" data-i18n="program.item2.title">Sesiune foto</div>
+                    <div class="desc" data-i18n="program.item2.desc">Câteva cadre pentru amintire, cu noi și cei mai dragi</div>
                 </div>
             </div>
             <div class="program-row">
                 <div class="program-time">17:00</div>
                 <div class="program-detail">
-                    <div class="title">Cocktail de bun venit</div>
-                    <div class="desc">Vă întâmpinăm la Villa Garden cu șampanie și aperitive</div>
+                    <div class="title" data-i18n="program.item3.title">Cocktail de bun venit</div>
+                    <div class="desc" data-i18n="program.item3.desc">Vă întâmpinăm la Villa Garden cu șampanie și aperitive</div>
                 </div>
             </div>
             <div class="program-row">
                 <div class="program-time">19:00</div>
                 <div class="program-detail">
-                    <div class="title">Cina festivă</div>
-                    <div class="desc">Un meniu pregătit cu grijă pentru o seară perfectă</div>
+                    <div class="title" data-i18n="program.item4.title">Cina festivă</div>
+                    <div class="desc" data-i18n="program.item4.desc">Un meniu pregătit cu grijă pentru o seară perfectă</div>
                 </div>
             </div>
             <div class="program-row">
                 <div class="program-time">21:30</div>
                 <div class="program-detail">
-                    <div class="title">Primul dans</div>
-                    <div class="desc">Apoi vă invităm pe ringul de dans alături de noi</div>
+                    <div class="title" data-i18n="program.item5.title">Primul dans</div>
+                    <div class="desc" data-i18n="program.item5.desc">Apoi vă invităm pe ringul de dans alături de noi</div>
                 </div>
             </div>
             <div class="program-row">
                 <div class="program-time">23:30</div>
                 <div class="program-detail">
-                    <div class="title">Tortul miresei</div>
-                    <div class="desc">Un moment dulce înainte de petrecerea care continuă până în zori</div>
+                    <div class="title" data-i18n="program.item6.title">Tortul miresei</div>
+                    <div class="desc" data-i18n="program.item6.desc">Un moment dulce înainte de petrecerea care continuă până în zori</div>
                 </div>
             </div>
         </div>
@@ -1460,17 +1386,17 @@
          DRESS CODE
          ============================================================ -->
     <section class="block blush">
-        <div class="section-eyebrow reveal">Dress code</div>
-        <h2 class="section-title reveal">Ținută</h2>
+        <div class="section-eyebrow reveal" data-i18n="dress.eyebrow">Dress code</div>
+        <h2 class="section-title reveal" data-i18n="dress.title">Ținută</h2>
 
         <div class="dress reveal">
-            <div class="dress-title">Elegant romantic</div>
-            <p class="dress-desc">
+            <div class="dress-title" data-i18n="dress.name">Elegant romantic</div>
+            <p class="dress-desc" data-i18n="dress.desc">
                 Vă rugăm să vă bucurați alături de noi într-o ținută elegantă.
                 Sugestie: nuanțe pastel sau pământii, cu accente metalice.
                 Domnii — costum închis la culoare. Doamnele — rochie de seară.
             </p>
-            <div class="swatches" role="list" aria-label="Sugestii de culori">
+            <div class="swatches" role="list" data-i18n-aria-label="dress.swatchesAria" aria-label="Sugestii de culori">
                 <div>
                     <div class="swatch" style="background: #FBE0E5" title="Blush" role="listitem"></div>
                     <span class="swatch-label">Blush</span>
@@ -1499,8 +1425,8 @@
          GALLERY
          ============================================================ -->
     <section class="block cream">
-        <div class="section-eyebrow reveal">Galerie</div>
-        <h2 class="section-title reveal">Momentele noastre</h2>
+        <div class="section-eyebrow reveal" data-i18n="gallery.eyebrow">Galerie</div>
+        <h2 class="section-title reveal" data-i18n="gallery.title">Momentele noastre</h2>
 
         <div class="gallery reveal-stagger">
             <!-- ✏️ ÎNLOCUIEȘTE src cu pozele tale -->
@@ -1538,58 +1464,6 @@
     </section>
 
     <!-- ============================================================
-         RSVP FORM
-         ============================================================ -->
-    <section class="block blush" id="rsvp">
-        <div class="section-eyebrow reveal">Confirmă prezența</div>
-        <h2 class="section-title reveal">Spune-ne dacă vii</h2>
-
-        <div class="rsvp reveal">
-            <form class="rsvp-form" id="rsvpForm" onsubmit="handleRsvp(event)">
-                <div class="field">
-                    <label for="rsvp-name">Numele tău</label>
-                    <input type="text" id="rsvp-name" name="name" required placeholder="Ion Popescu" />
-                </div>
-
-                <div class="field">
-                    <label>Vei fi alături de noi?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="attending" value="da" required /><span>Cu drag, da</span></label>
-                        <label><input type="radio" name="attending" value="nu" /><span>Din păcate, nu</span></label>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label for="rsvp-guests">Câți veți fi (împreună cu tine)</label>
-                    <input type="number" id="rsvp-guests" name="guests" min="1" max="6" value="1" />
-                </div>
-
-                <div class="field">
-                    <label for="rsvp-diet">Preferințe culinare (opțional)</label>
-                    <input type="text" id="rsvp-diet" name="diet" placeholder="Ex: vegetarian, fără gluten" />
-                </div>
-
-                <div class="field">
-                    <label for="rsvp-msg">Un mesaj pentru noi (opțional)</label>
-                    <textarea id="rsvp-msg" name="message" placeholder="Câteva cuvinte..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Trimite confirmarea</button>
-            </form>
-
-            <div class="form-success" id="formSuccess">
-                <div class="check">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                </div>
-                <p>Mulțumim!</p>
-                <p class="sub">Abia așteptăm să te avem alături de noi.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
          FINAL MESSAGE
          ============================================================ -->
     <section class="block cream">
@@ -1599,7 +1473,7 @@
                 <svg width="14" height="14" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
                 <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="url(#pearlBase)"/><circle cx="6" cy="6" r="6" fill="url(#pearlReflex)"/></svg>
             </div>
-            <p class="final-msg">
+            <p class="final-msg" data-i18n-html="final.msg">
                 „Pentru că dragostea adevărată<br/>nu se vede cu ochii,<br/>ci se simte cu inima."
             </p>
             <div class="final-names">Daniela &amp; Cristian</div>
@@ -1612,7 +1486,7 @@
          ============================================================ -->
     <footer>
         <div class="heart">&hearts;</div>
-        <p>Cu drag, Daniela &amp; Cristian</p>
+        <p data-i18n="footer.text">Cu drag, Daniela &amp; Cristian</p>
     </footer>
 
     <!-- Logica JS este in /static/js/app.js (incarcata cu defer in <head>) -->
