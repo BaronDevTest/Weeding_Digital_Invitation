@@ -6,7 +6,8 @@
     <title data-i18n="page.title">Daniela &amp; Cristian &mdash; 23 Iulie 2027</title>
     <meta name="description" data-i18n-content="page.description" content="Vă invităm la nunta noastră — Daniela &amp; Cristian, 23 Iulie 2027, Chișinău" />
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cg fill='none' stroke='%236B2030' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M 4 20 C 3 14 3 8 5 5 C 7 3 11 3 13 5 C 16 8 16 16 13 19 C 11 21 7 21 4 20 Z'/%3E%3Cpath d='M 28 6 C 26 4 22 3 19 5 C 16 7 14 12 16 16 C 18 20 23 21 28 18'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="/static/logo/monogram-hexagon.svg">
+    <link rel="apple-touch-icon" href="/static/logo/monogram-hexagon.svg">
     <meta name="theme-color" content="#FBE0E5" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,7 +89,7 @@
             color: var(--color-blush-deep);
         }
         .monogram-divider {
-            width: clamp(28px, 5vw, 36px);
+            width: clamp(22px, 4vw, 30px);
             color: var(--color-accent);
         }
         .monogram-counter {
@@ -1786,42 +1787,49 @@
             </radialGradient>
 
             <!-- ============================================================
-                 MONOGRAMA D & C — stroke pur, foloseste currentColor
-                 viewBox 100x70 pentru proportii consistente la orice scala
+                 MONOGRAMA HEXAGON D & C — design din monogram-hexagon.svg
+                 viewBox 200x200, foloseste currentColor pentru paleta
                  ============================================================ -->
-            <symbol id="monogram-dc" viewBox="0 0 100 70" overflow="visible">
-                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- D calligrafic: corp cu swash ascendent -->
-                    <path d="M 14 56
-                             C 12 42 12 24 16 16
-                             C 18 12 24 11 30 13
-                             C 42 17 50 28 50 38
-                             C 50 50 42 58 30 58
-                             C 22 58 16 58 14 56 Z"
-                          stroke-width="1.5"/>
-                    <!-- Swash superior D -->
-                    <path d="M 16 16 Q 22 6 32 8" stroke-width="1.2"/>
-                    <!-- C calligrafic -->
-                    <path d="M 90 18
-                             C 84 12 76 10 68 12
-                             C 58 15 50 26 50 38
-                             C 50 50 58 60 70 60
-                             C 78 60 86 56 90 50"
-                          stroke-width="1.5"/>
-                    <!-- Swash superior C -->
-                    <path d="M 90 18 Q 96 10 92 6" stroke-width="1.2"/>
-                    <!-- Punct decorativ jos intre litere -->
-                    <circle cx="50" cy="64" r="0.9" fill="currentColor" stroke="none"/>
-                    <!-- Flourish subtil dedesubt -->
-                    <path d="M 22 66 Q 50 70 78 66" stroke-width="0.6" opacity="0.45"/>
+            <symbol id="monogram-dc" viewBox="0 0 200 200" overflow="visible">
+                <g transform="translate(100, 100)">
+                    <!-- Hexagon exterior -->
+                    <path d="M 0 -75 L 65 -37.5 L 65 37.5 L 0 75 L -65 37.5 L -65 -37.5 Z"
+                          fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <!-- D in stanga -->
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-weight="500"
+                          fill="currentColor"
+                          font-size="56" text-anchor="middle" dominant-baseline="central" x="-28" y="-2">D</text>
+                    <!-- Ampersand cursiv in mijloc -->
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-style="italic"
+                          fill="currentColor" opacity="0.78"
+                          font-size="32" text-anchor="middle" dominant-baseline="central" x="0" y="-2">&amp;</text>
+                    <!-- C in dreapta -->
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-weight="500"
+                          fill="currentColor"
+                          font-size="56" text-anchor="middle" dominant-baseline="central" x="28" y="-2">C</text>
+                    <!-- Linie separator -->
+                    <line x1="-22" y1="28" x2="22" y2="28" stroke="currentColor" stroke-width="0.6" opacity="0.7"/>
+                    <!-- Anul -->
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-style="italic"
+                          fill="currentColor" opacity="0.78"
+                          font-size="11" text-anchor="middle" x="0" y="46" letter-spacing="0.35em">2027</text>
                 </g>
             </symbol>
 
-            <!-- Monograma simplificata pentru favicon 16x16 -->
-            <symbol id="monogram-dc-simple" viewBox="0 0 32 24" overflow="visible">
-                <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 20 C 3 14 3 8 5 5 C 7 3 11 3 13 5 C 16 8 16 16 13 19 C 11 21 7 21 4 20 Z"/>
-                    <path d="M 28 6 C 26 4 22 3 19 5 C 16 7 14 12 16 16 C 18 20 23 21 28 18"/>
+            <!-- Varianta simplificata pentru loader seal (fara an, stroke mai gros) -->
+            <symbol id="monogram-dc-simple" viewBox="0 0 200 200" overflow="visible">
+                <g transform="translate(100, 100)">
+                    <path d="M 0 -75 L 65 -37.5 L 65 37.5 L 0 75 L -65 37.5 L -65 -37.5 Z"
+                          fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-weight="500"
+                          fill="currentColor"
+                          font-size="78" text-anchor="middle" dominant-baseline="central" x="-32" y="0">D</text>
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-style="italic"
+                          fill="currentColor" opacity="0.85"
+                          font-size="44" text-anchor="middle" dominant-baseline="central" x="0" y="0">&amp;</text>
+                    <text font-family="'Cormorant Garamond', Georgia, serif" font-weight="500"
+                          fill="currentColor"
+                          font-size="78" text-anchor="middle" dominant-baseline="central" x="32" y="0">C</text>
                 </g>
             </symbol>
         </defs>
