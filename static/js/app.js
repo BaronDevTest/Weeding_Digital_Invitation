@@ -1069,8 +1069,11 @@
 
     var skipBtn = document.getElementById('loaderSkip');
     var INTRO_KEY = 'dc_seen_intro';
-    var ANIM_DURATION = 3400; // ms — totala (envelope appear → seal fall → flap → card → pause)
-    var SKIP_REVEAL_AFTER = 1000; // ms — skip button apare dupa 1s
+    // Timeline: env-appear (0.1-0.8) → seal pulse + tremble (0.85-1.8) →
+    // seal fall + particles (1.8-2.75) → flap opens (2.7-3.65) →
+    // card emerges (3.25-4.4) → flower appears (4.0-4.6) → hold + fade
+    var ANIM_DURATION = 5200;
+    var SKIP_REVEAL_AFTER = 1100;
 
     var seenBefore = false;
     try { seenBefore = localStorage.getItem(INTRO_KEY) === '1'; } catch (e) { /* storage blocked */ }
